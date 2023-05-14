@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">danas</div>
+            <div class="rus">сегодня</div>
+            </li>
+        
+            <li>
+            <div class="srb">juče</div>
+            <div class="rus">вчера</div>
+            </li>
+        
+            <li>
+            <div class="srb">reč</div>
+            <div class="rus">слово</div>
+            </li>
+        
+            <li>
+            <div class="srb">slovo</div>
+            <div class="rus">буква</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">o</span>gramer</div>
+            <div class="rus">программист</div>
+            </li>
+        
+            <li>
+            <div class="srb">pravnik</div>
+            <div class="rus">юрист</div>
+            </li>
+        
+            <li>
+            <div class="srb">adv<span class="stress">o</span>kat</div>
+            <div class="rus">адвокат</div>
+            </li>
+        
+            <li>
+            <div class="srb">uvek</div>
+            <div class="rus">всегда</div>
+            </li>
+        
+            <li>
+            <div class="srb">ali</div>
+            <div class="rus">но</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>nekad</div>
+            <div class="rus">иногда</div>
+            </li>
+        
+            <li>
+            <div class="srb">međ<span class="stress">u</span>tim</div>
+            <div class="rus">однако</div>
+            </li>
+        
+            <li>
+            <div class="srb">vrlo</div>
+            <div class="rus">очень</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">e</span>oma</div>
+            <div class="rus">очень</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>dlično</div>
+            <div class="rus">отлично</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>ruđe</div>
+            <div class="rus">орудие, инструмент</div>
+            </li>
+        
+            <li>
+            <div class="srb">odmah</div>
+            <div class="rus">немедленно</div>
+            </li>
+        
+            <li>
+            <div class="srb">brigа</div>
+            <div class="rus">забота</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">e</span>čerаs</div>
+            <div class="rus">сегодня вечером</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">o</span>leti</div>
+            <div class="rus">любить</div>
+            </li>
+        
+            <li>
+            <div class="srb">život</div>
+            <div class="rus">жизнь</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Ge</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+    </div>
+</body>
+
+<script>
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+const MIDDLE_ELEMENT_STYLE = i[(i.length / 2) - 1].style
+MIDDLE_ELEMENT_STYLE.borderBottomColor = '#A24936'
+MIDDLE_ELEMENT_STYLE.borderBottomWidth = '1px'
+MIDDLE_ELEMENT_STYLE.borderBottomStyle = 'solid'
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function toggleColor(el) {
+    const s = el.style
+    const newColor = 'rgb(168, 130, 221)'
+
+    s.backgroundColor === newColor
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = newColor
+}
+</script>

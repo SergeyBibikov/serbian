@@ -1,0 +1,6 @@
+{% for word in words %}
+            <div class="wordPair">
+            <div class="srb">{{ word[0] }}</div>
+            <div class="rus">{{ word[1] }}</div>
+            </div>
+        {% endfor %}
