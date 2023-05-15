@@ -4,10 +4,22 @@ document.querySelector('#count').textContent = `Всего слов: ${i.length}
 
 i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
 
-const MIDDLE_ELEMENT_STYLE = i[(i.length / 2) - 1].style
-MIDDLE_ELEMENT_STYLE.borderBottomColor = '#A24936'
-MIDDLE_ELEMENT_STYLE.borderBottomWidth = '1px'
-MIDDLE_ELEMENT_STYLE.borderBottomStyle = 'solid'
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
 
 function shuffle() {
     const ol = document.querySelector('ol');
@@ -26,7 +38,8 @@ function shuffle() {
     }
 
     ol.replaceChildren(...result);
-    MIDDLE_ELEMENT_STYLE.border = 'initial'
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
 }
 
 function hideRu() {
