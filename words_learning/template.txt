@@ -23,7 +23,7 @@
     <div id="count"></div>
     <div class="controls">
         <button onclick=shuffle()>Shuffle</button>
-        <button onclick=hideRu()>Only Ge</button>
+        <button onclick=hideRu()>Only Srb</button>
         <button onclick=hideGe()>Only Ru</button>
         <button onclick=showAll()>All</button>
     </div>
