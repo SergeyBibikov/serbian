@@ -16,8 +16,7 @@ def get_known_words() -> dict[str, list[str]]:
     from bs4 import BeautifulSoup
     with open("words.html") as fp:
         soup = BeautifulSoup(fp, "html.parser")
-        a = soup.body.div.find_all('div', class_="wordPair")  # type:ignore
-
+        a = soup.body.find_all('div', class_="wordPair")  # type:ignore
         known_words = {}
         for w in a:
             srb = w.find('div', class_="srb").text
@@ -26,7 +25,6 @@ def get_known_words() -> dict[str, list[str]]:
                 known_words[srb].append(ru)
             else:
                 known_words[srb] = [ru]
-
         return known_words
 
 
@@ -34,16 +32,16 @@ def generate_words_addition():
     new_words = read_new_words()
     known_words = get_known_words()
     kw_list = known_words.keys()
-    nw_list = new_words.keys()
+    nw_list = list(new_words.keys())
+    duplicates = []
     for w in nw_list:
         if w in kw_list:
-            print(
-                f"Word {w} is known. Known translations are: {known_words[w]}, new translation is {new_words[w]}")
+            duplicates.append(f"Word {w} is known. Known translations are: {known_words[w]}, new translation is {new_words[w]}")
             del new_words[w]
     with open(f"addition.html", mode="w") as f:
         env = Environment(loader=FileSystemLoader('.'))
         content = env.get_template(
-            "new_words_template.txt").render(words=sorted(new_words.items()))
+            "new_words_template.txt").render(duplicates=duplicates,words=sorted(new_words.items()))
         f.write(content)
 
 

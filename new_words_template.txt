@@ -1,3 +1,6 @@
+{% if duplicates|length > 0 %}
+    {{ duplicates }}
+{% endif %}
 {% for word in words %}
             <div class="wordPair">
             <div class="srb">{{ word[0] }}</div>
