@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">sto</div>
+            <div class="rus">стол</div>
+            </li>
+        
+            <li>
+            <div class="srb">orman</div>
+            <div class="rus">шкаф</div>
+            </li>
+        
+            <li>
+            <div class="srb">t<span class="stress">o</span>alet</div>
+            <div class="rus">туалет</div>
+            </li>
+        
+            <li>
+            <div class="srb">k<span class="stress">u</span>paonica</div>
+            <div class="rus">ванная комната</div>
+            </li>
+        
+            <li>
+            <div class="srb">k<span class="stress">u</span>patilo</div>
+            <div class="rus">ванная</div>
+            </li>
+        
+            <li>
+            <div class="srb">čajnik</div>
+            <div class="rus">чайник</div>
+            </li>
+        
+            <li>
+            <div class="srb">gl<span class="stress">a</span>čalica</div>
+            <div class="rus">утюг</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">u</span>kotina</div>
+            <div class="rus">трещина, расселина</div>
+            </li>
+        
+            <li>
+            <div class="srb">sn<span class="stress">o</span>siti</div>
+            <div class="rus">сносить, переносить, нести</div>
+            </li>
+        
+            <li>
+            <div class="srb">mreža</div>
+            <div class="rus">сеть</div>
+            </li>
+        
+            <li>
+            <div class="srb">k<span class="stress">o</span>risnik</div>
+            <div class="rus">пользователь</div>
+            </li>
+        
+            <li>
+            <div class="srb">izbor</div>
+            <div class="rus">выбор, избрание</div>
+            </li>
+        
+            <li>
+            <div class="srb">izbori</div>
+            <div class="rus">выборы</div>
+            </li>
+        
+            <li>
+            <div class="srb">poretko</div>
+            <div class="rus">довольно редко</div>
+            </li>
+        
+            <li>
+            <div class="srb">odb<span class="stress">i</span>jati</div>
+            <div class="rus">отгонять, отбивать, отражать</div>
+            </li>
+        
+            <li>
+            <div class="srb">srčani udar</div>
+            <div class="rus">сердечный приступ</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>dgovor</div>
+            <div class="rus">ответ</div>
+            </li>
+        
+            <li>
+            <div class="srb">pero</div>
+            <div class="rus">ручка шариковая</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>torak</div>
+            <div class="rus">вторник</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">e</span>žbati</div>
+            <div class="rus">отрабатывать, тренировать</div>
+            </li>
+        
+            <li>
+            <div class="srb">ž<span class="stress">e</span>leti</div>
+            <div class="rus">хотеть</div>
+            </li>
+        
+            <li>
+            <div class="srb">jastuk</div>
+            <div class="rus">подушка</div>
+            </li>
+        
+            <li>
+            <div class="srb">zvono</div>
+            <div class="rus">колокол</div>
+            </li>
+        
+            <li>
+            <div class="srb">tr<span class="stress">a</span>žiti</div>
+            <div class="rus">искать, требовать, просить</div>
+            </li>
+        
+            <li>
+            <div class="srb">sraman</div>
+            <div class="rus">постыдный, позорный</div>
+            </li>
+        
+            <li>
+            <div class="srb">potez</div>
+            <div class="rus">штрих, черта; ход; жест, движение</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">a</span>metan</div>
+            <div class="rus">умный, разумный, толковый</div>
+            </li>
+        
+            <li>
+            <div class="srb">zan<span class="stress">i</span>mljiv</div>
+            <div class="rus">занимательный, интересный</div>
+            </li>
+        
+            <li>
+            <div class="srb">zločin</div>
+            <div class="rus">злодеяние, преступление</div>
+            </li>
+        
+            <li>
+            <div class="srb">zbog</div>
+            <div class="rus">вследствие, из-за</div>
+            </li>
+        
+            <li>
+            <div class="srb">nar<span class="stress">u</span>čiti</div>
+            <div class="rus">заказать; передать поручение</div>
+            </li>
+        
+            <li>
+            <div class="srb">u međ<span class="stress">u</span>vremenu</div>
+            <div class="rus">(вводн) между тем, тем временем</div>
+            </li>
+        
+            <li>
+            <div class="srb">r<span class="stress">o</span>bija</div>
+            <div class="rus">каторга</div>
+            </li>
+        
+            <li>
+            <div class="srb">kazna</div>
+            <div class="rus">наказание, кара, взыскание</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>hapsiti</div>
+            <div class="rus">арестовать</div>
+            </li>
+        
+            <li>
+            <div class="srb">uhapš<span class="stress">e</span>nik</div>
+            <div class="rus">арестант, арестованный</div>
+            </li>
+        
+            <li>
+            <div class="srb">t<span class="stress">u</span>žilaštvo</div>
+            <div class="rus">прокуратура</div>
+            </li>
+        
+            <li>
+            <div class="srb">kasno</div>
+            <div class="rus">поздно</div>
+            </li>
+        
+            <li>
+            <div class="srb">kasnije</div>
+            <div class="rus">позже</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">i</span>zneti</div>
+            <div class="rus">вынести, подать; составить(в сумме)</div>
+            </li>
+        
+            <li>
+            <div class="srb">s<span class="stress">u</span>dnica</div>
+            <div class="rus">зал суда,здание суда</div>
+            </li>
+        
+            <li>
+            <div class="srb">dodati</div>
+            <div class="rus">добавить, прибавить; передать из рук в руки</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>slanik</div>
+            <div class="rus">депутать; посланец; посланник</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>daran</div>
+            <div class="rus">ударный</div>
+            </li>
+        
+            <li>
+            <div class="srb">r<span class="stress">e</span>dovan</div>
+            <div class="rus">рядовой,обычный; регулярный</div>
+            </li>
+        
+            <li>
+            <div class="srb">pren<span class="stress">o</span>siti</div>
+            <div class="rus">переносить, перевозить, перемещать</div>
+            </li>
+        
+            <li>
+            <div class="srb">dakle</div>
+            <div class="rus">итак, следовательно, значит</div>
+            </li>
+        
+            <li>
+            <div class="srb">poput</div>
+            <div class="rus">подобно, словно, наподобие</div>
+            </li>
+        
+            <li>
+            <div class="srb">prećutk<span class="stress">i</span>vati</div>
+            <div class="rus">помалкивать, замалчивать</div>
+            </li>
+        
+            <li>
+            <div class="srb">velik</div>
+            <div class="rus">большой, великий</div>
+            </li>
+        
+            <li>
+            <div class="srb">stručnjak</div>
+            <div class="rus">специалист, знаток, эксперт</div>
+            </li>
+        
+            <li>
+            <div class="srb">pokuš<span class="stress">a</span>vati</div>
+            <div class="rus">пытаться, пробовать, ипытывать</div>
+            </li>
+        
+            <li>
+            <div class="srb">krigla</div>
+            <div class="rus">пивной бокал</div>
+            </li>
+        
+            <li>
+            <div class="srb">šolja</div>
+            <div class="rus">чашка(для кофе)</div>
+            </li>
+        
+            <li>
+            <div class="srb">ne<span class="stress">i</span>mar</div>
+            <div class="rus">зодчий, строитель</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">e</span>sreća</div>
+            <div class="rus">несчастье, беда, несчастный случай</div>
+            </li>
+        
+            <li>
+            <div class="srb">vr<span class="stress">e</span>meplovo</div>
+            <div class="rus">машина времени</div>
+            </li>
+        
+            <li>
+            <div class="srb">pare</div>
+            <div class="rus">деньги</div>
+            </li>
+        
+            <li>
+            <div class="srb">prilog</div>
+            <div class="rus">приложение, приношение, пожертвование; заметка</div>
+            </li>
+        
+            <li>
+            <div class="srb">prek<span class="stress">i</span>dati</div>
+            <div class="rus">прерывать, разрывать, прекращать; перебивать</div>
+            </li>
+        
+            <li>
+            <div class="srb">duh<span class="stress">o</span>vit</div>
+            <div class="rus">остроумный</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">e</span>zbednost</div>
+            <div class="rus">безопасность</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">e</span>siti</div>
+            <div class="rus">встретить, застать</div>
+            </li>
+        
+            <li>
+            <div class="srb">domar</div>
+            <div class="rus">управляющий домом</div>
+            </li>
+        
+            <li>
+            <div class="srb">domari</div>
+            <div class="rus">домашние</div>
+            </li>
+        
+            <li>
+            <div class="srb">način</div>
+            <div class="rus">способ, метод, приём</div>
+            </li>
+        
+            <li>
+            <div class="srb">kiša</div>
+            <div class="rus">дождь</div>
+            </li>
+        
+            <li>
+            <div class="srb">l<span class="stress">e</span>ska</div>
+            <div class="rus">орешник</div>
+            </li>
+        
+            <li>
+            <div class="srb">lužnjak</div>
+            <div class="rus">душ</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>balski</div>
+            <div class="rus">береговой, прибрежный</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+    </div>
+</body>
+
+<script>
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function toggleColor(el) {
+    const s = el.style
+    const newColor = 'rgb(168, 130, 221)'
+
+    s.backgroundColor === newColor
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = newColor
+}
+</script>
