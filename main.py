@@ -1,10 +1,12 @@
 from jinja2 import Environment, FileSystemLoader
 import csv
 from transl import tt, substitute
+import sys
 
 
 def read_new_words():
-    with open('nwords.csv') as f:
+    filename = sys.argv[1] if len(sys.argv) > 1 else 'nwords.csv'
+    with open(filename) as f:
         words = csv.reader(f, delimiter=':')
         next(words)
 
@@ -36,12 +38,13 @@ def generate_words_addition():
     duplicates = []
     for w in nw_list:
         if w in kw_list:
-            duplicates.append(f"Word {w} is known. Known translations are: {known_words[w]}, new translation is {new_words[w]}")
+            duplicates.append(
+                f"Word {w} is known. Known translations are: {known_words[w]}, new translation is {new_words[w]}")
             del new_words[w]
     with open(f"addition.html", mode="w") as f:
         env = Environment(loader=FileSystemLoader('.'))
         content = env.get_template(
-            "new_words_template.txt").render(duplicates=duplicates,words=sorted(new_words.items()))
+            "new_words_template.txt").render(duplicates=duplicates, words=sorted(new_words.items()))
         f.write(content)
 
 
