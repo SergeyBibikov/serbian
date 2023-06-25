@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">ank<span class="stress">e</span>ta</div>
+            <div class="rus">опрос</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">a</span>citi</div>
+            <div class="rus">бросить, кинуть</div>
+            </li>
+        
+            <li>
+            <div class="srb">banak</div>
+            <div class="rus">прилавок</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">e</span>skućnik</div>
+            <div class="rus">бездомный</div>
+            </li>
+        
+            <li>
+            <div class="srb">bod</div>
+            <div class="rus">очко(в спорте)</div>
+            </li>
+        
+            <li>
+            <div class="srb">bolest</div>
+            <div class="rus">болезнь</div>
+            </li>
+        
+            <li>
+            <div class="srb">bor<span class="stress">a</span>nija</div>
+            <div class="rus">зелёная фасоль</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">o</span>raviti</div>
+            <div class="rus">жить, проживать</div>
+            </li>
+        
+            <li>
+            <div class="srb">brilj<span class="stress">i</span>rati</div>
+            <div class="rus">блистать</div>
+            </li>
+        
+            <li>
+            <div class="srb">brus</div>
+            <div class="rus">точильный камень</div>
+            </li>
+        
+            <li>
+            <div class="srb">brzo</div>
+            <div class="rus">быстро</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">u</span>jati</div>
+            <div class="rus">пышно разрастаться, подниматься (о воде)</div>
+            </li>
+        
+            <li>
+            <div class="srb">vrli</div>
+            <div class="rus">добродетельный, достойный</div>
+            </li>
+        
+            <li>
+            <div class="srb">čamac</div>
+            <div class="rus">лодка, шлюпка</div>
+            </li>
+        
+            <li>
+            <div class="srb">c<span class="stress">a</span>rinarnica</div>
+            <div class="rus">таможня</div>
+            </li>
+        
+            <li>
+            <div class="srb">čelik</div>
+            <div class="rus">сталь</div>
+            </li>
+        
+            <li>
+            <div class="srb">ćerka</div>
+            <div class="rus">дочь</div>
+            </li>
+        
+            <li>
+            <div class="srb">ćošak</div>
+            <div class="rus">угол</div>
+            </li>
+        
+            <li>
+            <div class="srb">čudan</div>
+            <div class="rus">странный, чудной</div>
+            </li>
+        
+            <li>
+            <div class="srb">čvor</div>
+            <div class="rus">узел</div>
+            </li>
+        
+            <li>
+            <div class="srb">dečak</div>
+            <div class="rus">мальчик</div>
+            </li>
+        
+            <li>
+            <div class="srb">dev<span class="stress">i</span>za</div>
+            <div class="rus">девиз</div>
+            </li>
+        
+            <li>
+            <div class="srb">dirljiv</div>
+            <div class="rus">трогательный</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">o</span>datan</div>
+            <div class="rus">дополнительный, прибавочный</div>
+            </li>
+        
+            <li>
+            <div class="srb">dok</div>
+            <div class="rus">в то время, как</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">o</span>neti</div>
+            <div class="rus">принести, доставить</div>
+            </li>
+        
+            <li>
+            <div class="srb">dož<span class="stress">i</span>veti</div>
+            <div class="rus">дожить, испытать, пережить</div>
+            </li>
+        
+            <li>
+            <div class="srb">dub<span class="stress">i</span>na</div>
+            <div class="rus">глубина</div>
+            </li>
+        
+            <li>
+            <div class="srb">dubok</div>
+            <div class="rus">глубокий</div>
+            </li>
+        
+            <li>
+            <div class="srb">đumbir</div>
+            <div class="rus">имбирь</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">u</span>žnost</div>
+            <div class="rus">долг, обязанность</div>
+            </li>
+        
+            <li>
+            <div class="srb">dv<span class="stress">o</span>rište</div>
+            <div class="rus">двор</div>
+            </li>
+        
+            <li>
+            <div class="srb">em<span class="stress">i</span>sija</div>
+            <div class="rus">эмиссия, выпуск; телепередача </div>
+            </li>
+        
+            <li>
+            <div class="srb">evo</div>
+            <div class="rus">вот(частица)</div>
+            </li>
+        
+            <li>
+            <div class="srb">gaće</div>
+            <div class="rus">трусЫ</div>
+            </li>
+        
+            <li>
+            <div class="srb">gladac</div>
+            <div class="rus">красиво одетый человек, франт</div>
+            </li>
+        
+            <li>
+            <div class="srb">g<span class="stress">o</span>spodski</div>
+            <div class="rus">господский, барский</div>
+            </li>
+        
+            <li>
+            <div class="srb">g<span class="stress">r</span>mljavina</div>
+            <div class="rus">грохот, гром</div>
+            </li>
+        
+            <li>
+            <div class="srb">gumen</div>
+            <div class="rus">резиновый</div>
+            </li>
+        
+            <li>
+            <div class="srb">gužva</div>
+            <div class="rus">столпотворение, пробка</div>
+            </li>
+        
+            <li>
+            <div class="srb">h<span class="stress">a</span>rtija</div>
+            <div class="rus">бумага</div>
+            </li>
+        
+            <li>
+            <div class="srb">ipak</div>
+            <div class="rus">всё же, и всё-таки</div>
+            </li>
+        
+            <li>
+            <div class="srb">ispit</div>
+            <div class="rus">исппытание, экзамен</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">i</span>spovest</div>
+            <div class="rus">исповедь</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">i</span>spuniti</div>
+            <div class="rus">заполнить, наполнить</div>
+            </li>
+        
+            <li>
+            <div class="srb">iza</div>
+            <div class="rus">за, позади</div>
+            </li>
+        
+            <li>
+            <div class="srb">izdv<span class="stress">o</span>jiti</div>
+            <div class="rus">выделить, обособить</div>
+            </li>
+        
+            <li>
+            <div class="srb">iznad</div>
+            <div class="rus">над; сверх</div>
+            </li>
+        
+            <li>
+            <div class="srb">iznen<span class="stress">a</span>diti</div>
+            <div class="rus">удивить, застать врасплох</div>
+            </li>
+        
+            <li>
+            <div class="srb">izraz</div>
+            <div class="rus">выражение</div>
+            </li>
+        
+            <li>
+            <div class="srb">izv<span class="stress">a</span>biti</div>
+            <div class="rus">выманить</div>
+            </li>
+        
+            <li>
+            <div class="srb">izvor</div>
+            <div class="rus">источник, родник, ключ</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">i</span>zvršan</div>
+            <div class="rus">исполнительный</div>
+            </li>
+        
+            <li>
+            <div class="srb">izv<span class="stress">u</span>ći</div>
+            <div class="rus">вытянуть, извлечь</div>
+            </li>
+        
+            <li>
+            <div class="srb">j<span class="stress">a</span>čati</div>
+            <div class="rus">крепнуть, усиливаться</div>
+            </li>
+        
+            <li>
+            <div class="srb">jač<span class="stress">i</span>na</div>
+            <div class="rus">сила, мощь</div>
+            </li>
+        
+            <li>
+            <div class="srb">jeziv</div>
+            <div class="rus">жуткий, страшный</div>
+            </li>
+        
+            <li>
+            <div class="srb">joj</div>
+            <div class="rus">ай! ой!</div>
+            </li>
+        
+            <li>
+            <div class="srb">kašika</div>
+            <div class="rus">ложка</div>
+            </li>
+        
+            <li>
+            <div class="srb">kise<span class="stress">o</span>nik</div>
+            <div class="rus">кислород</div>
+            </li>
+        
+            <li>
+            <div class="srb">klimav</div>
+            <div class="rus"> шатающийся, расшатанный</div>
+            </li>
+        
+            <li>
+            <div class="srb">k<span class="stress">o</span>mšija</div>
+            <div class="rus">сосед</div>
+            </li>
+        
+            <li>
+            <div class="srb">kr<span class="stress">e</span>nuti</div>
+            <div class="rus">двинуть, сдвинуть, дать ход</div>
+            </li>
+        
+            <li>
+            <div class="srb">kriti</div>
+            <div class="rus">скрывать, прятать</div>
+            </li>
+        
+            <li>
+            <div class="srb">kriza</div>
+            <div class="rus">кризис</div>
+            </li>
+        
+            <li>
+            <div class="srb">krošnja</div>
+            <div class="rus">крона дерева</div>
+            </li>
+        
+            <li>
+            <div class="srb">kusur</div>
+            <div class="rus">сдача, остаток</div>
+            </li>
+        
+            <li>
+            <div class="srb">l<span class="stress">e</span>tovalište</div>
+            <div class="rus">летнее место отдыха, курорт</div>
+            </li>
+        
+            <li>
+            <div class="srb">lopov</div>
+            <div class="rus">вор</div>
+            </li>
+        
+            <li>
+            <div class="srb">l<span class="stress">u</span>dilo</div>
+            <div class="rus">сумасшествие, безумие</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+    </div>
+</body>
+
+<script>
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function toggleColor(el) {
+    const s = el.style
+    const newColor = 'rgb(168, 130, 221)'
+
+    s.backgroundColor === newColor
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = newColor
+}
+</script>
