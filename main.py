@@ -2,6 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 import csv
 from transl import tt, substitute
 import sys
+from random import shuffle
 
 
 def read_new_words():
@@ -60,6 +61,7 @@ def generate_exercises():
         w = w[70:]
         with open(f"./words_learning/ex{count}.html", mode="w") as f:
             env = Environment(loader=FileSystemLoader('./words_learning/'))
+            shuffle(tmp)
             content = env.get_template(
                 "template.txt").render(words=tmp)
             f.write(content)
