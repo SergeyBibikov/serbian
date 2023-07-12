@@ -3,6 +3,7 @@ import csv
 from transl import tt, substitute
 import sys
 from random import shuffle
+from sorting import sort_items
 
 
 def read_new_words():
@@ -45,7 +46,7 @@ def generate_words_addition():
     with open(f"addition.html", mode="w") as f:
         env = Environment(loader=FileSystemLoader('.'))
         content = env.get_template(
-            "new_words_template.txt").render(duplicates=duplicates, words=sorted(new_words.items()))
+            "new_words_template.txt").render(duplicates=duplicates, words=sort_items(new_words))
         f.write(content)
 
 
