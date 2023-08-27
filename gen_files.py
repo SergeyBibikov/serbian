@@ -41,7 +41,7 @@ def generate_words_addition():
     for w in nw_list:
         if w in kw_list:
             duplicates.append(
-                f"Word {w} is known. Known translations are: {known_words[w]}, new translation is {new_words[w]}")
+                f"Word '{w}' is known. Known translations are: {known_words[w]}, new translation is '{new_words[w]}'")
             del new_words[w]
     with open(f"addition.html", mode="w") as f:
         env = Environment(loader=FileSystemLoader('.'))

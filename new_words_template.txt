@@ -1,5 +1,7 @@
 {% if duplicates|length > 0 %}
-    {{ duplicates }}
+    {% for d in duplicates %}
+    <p>{{ d }}</p>
+    {% endfor %}
 {% endif %}
 {% for word in words %}
             <div class="wordPair">
