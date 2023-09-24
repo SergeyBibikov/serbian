@@ -1,210 +1,99 @@
-<!DOCTYPE html>
+<li>
+    <div class="srb">šale</div>
+    <div class="rus">шутливо, в шутку</div>
+</li>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<li>
+    <div class="srb"><span class="stress">u</span>redba</div>
+    <div class="rus">приказ, положение</div>
+</li>
 
-</head>
+<li>
+    <div class="srb"><span class="stress">u</span>ređaj</div>
+    <div class="rus">распорядок, строй; оборудование</div>
+</li>
 
-<style>
-    body {
-        font-size: max(3vw, 16px);
-    }
+<li>
+    <div class="srb">ug<span class="stress">u</span>šiti</div>
+    <div class="rus">задушить, заглушить, усмирить</div>
+</li>
 
-    li {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
+<li>
+    <div class="srb">ub<span class="stress">r</span>zati</div>
+    <div class="rus">ускорить, поторопить</div>
+</li>
 
-    li>div:nth-of-type(1) {
-        font-family: sans-serif;
-    }
+<li>
+    <div class="srb">p<span class="stress">o</span>velja</div>
+    <div class="rus">грамота, хартия</div>
+</li>
 
-    li:after {
-        content: '';
-        display: inline-block;
-        width: 200%;
-        height: 100%;
-        margin: -1px -100% 1px 0;
-        border-bottom: 1px dotted rgb(86, 82, 82);
-    }
+<li>
+    <div class="srb">šapa</div>
+    <div class="rus">лапа</div>
+</li>
 
-    .controls {
-        display: flex;
-        flex-direction: row;
-    }
+<li>
+    <div class="srb"><span class="stress">u</span>potreba</div>
+    <div class="rus">употребление, использование</div>
+</li>
 
-    button {
-        margin: 5px;
-    }
+<li>
+    <div class="srb"><span class="stress">u</span>metnik</div>
+    <div class="rus">артист, художник</div>
+</li>
 
-    .stress {
-        color: rgb(208, 80, 80);
-    }
-</style>
+<li>
+    <div class="srb">tući</div>
+    <div class="rus">бить, колотить</div>
+</li>
 
-<body>
-    <ol>
+<li>
+    <div class="srb"><span class="stress">u</span>stanak</div>
+    <div class="rus">восстание</div>
+</li>
 
-        <li>
-            <div class="srb">žapa</div>
-            <div class="rus">застенчивость, стыдливость</div>
-        </li>
+<li>
+    <div class="srb"><span class="stress">u</span>zbuna</div>
+    <div class="rus">тревога, переполох, мятеж</div>
+</li>
 
-        <li>
-            <div class="srb">z<span class="stress">a</span>rudak</div>
-            <div class="rus">румянец, покраснение</div>
-        </li>
+<li>
+    <div class="srb">privremen</div>
+    <div class="rus">временный</div>
+</li>
 
-        <li>
-            <div class="srb">z<span class="stress">a</span>sićen</div>
-            <div class="rus">насыщенный</div>
-        </li>
+<li>
+    <div class="srb">čv<span class="stress">r</span>st</div>
+    <div class="rus">твёрдый, крепкий, трудный</div>
+</li>
 
-        <li>
-            <div class="srb">ž<span class="stress">a</span>liti</div>
-            <div class="rus">жалеть, скорбеть</div>
-        </li>
+<li>
+    <div class="srb">up<span class="stress">a</span>liti</div>
+    <div class="rus">зажечь</div>
+</li>
 
-        <li>
-            <div class="srb">zv<span class="stress">a</span>ničan</div>
-            <div class="rus">официальный, служебный</div>
-        </li>
+<li>
+    <div class="srb"><span class="stress">u</span>putstvo</div>
+    <div class="rus">наставление, инструкция</div>
+</li>
 
-        <li>
-            <div class="srb">z<span class="stress">a</span>pucati</div>
-            <div class="rus">начать стрелять, защёлкать</div>
-        </li>
+<li>
+    <div class="srb">d<span class="stress">a</span>našnji</div>
+    <div class="rus">сегодняшний, нынешний</div>
+</li>
 
-        <li>
-            <div class="srb">šporet</div>
-            <div class="rus">кухонная плита</div>
-        </li>
+<li>
+    <div class="srb">tvorac</div>
+    <div class="rus">творец, создатель</div>
+</li>
 
-        <li>
-            <div class="srb">zaprepašć<span class="stress">e</span>nje</div>
-            <div class="rus">изумление, испуг, растерянность</div>
-        </li>
+<li>
+    <div class="srb">talas</div>
+    <div class="rus">волна</div>
+</li>
 
-        <li>
-            <div class="srb">št<span class="stress">i</span>titi</div>
-            <div class="rus">оборонять, охранять, отстаивать</div>
-        </li>
-
-        <li>
-            <div class="srb">zarad</div>
-            <div class="rus">ради, для</div>
-        </li>
-
-        <li>
-            <div class="srb">z<span class="stress">a</span>čuditi</div>
-            <div class="rus">удивить, изумить</div>
-        </li>
-
-        <li>
-            <div class="srb">zahtev</div>
-            <div class="rus">требование, желание</div>
-        </li>
-
-        <li>
-            <div class="srb">zv<span class="stress">a</span>ničnik</div>
-            <div class="rus">служащий, чиновник, оф. лицо</div>
-        </li>
-
-        <li>
-            <div class="srb">z<span class="stress">e</span>mljotres</div>
-            <div class="rus">землетрясение</div>
-        </li>
-
-        <li>
-            <div class="srb">z<span class="stress">a</span>stava</div>
-            <div class="rus">знамя, флаг</div>
-        </li>
-
-    </ol>
-    <div id="count"></div>
-    <div class="controls">
-        <button onclick=shuffle()>Shuffle</button>
-        <button onclick=hideRu()>Only Srb</button>
-        <button onclick=hideGe()>Only Ru</button>
-        <button onclick=showAll()>All</button>
-    </div>
-</body>
-
-<script>
-    const i = document.querySelectorAll('li')
-
-    document.querySelector('#count').textContent = `Всего слов: ${i.length}`
-
-    i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
-
-    toggleSeparators()
-
-    function toggleSeparators(isInitial = false) {
-        const WORDS_PER_DAY = 10
-        i.forEach((_, ind, arr) => {
-            if ((ind + 1) % WORDS_PER_DAY === 0) {
-                if (isInitial) arr[ind].style.border = 'initial';
-                else {
-                    s = arr[ind].style
-                    s.borderBottomColor = '#A24936'
-                    s.borderBottomWidth = '1px'
-                    s.borderBottomStyle = 'solid'
-                }
-            }
-        })
-    }
-
-    function shuffle() {
-        const ol = document.querySelector('ol');
-        const lis = ol.querySelectorAll('li');
-        const result = [];
-        const indexes = [];
-        for (let i = 0; i < lis.length; i++) {
-            indexes.push(i);
-        }
-        while (indexes.length > 0) {
-            const randomIndex = Math.floor(Math.random() * indexes.length)
-            const indexToPush = indexes[randomIndex]
-            indexes.splice(randomIndex, 1)
-
-            result.push(lis[indexToPush])
-        }
-
-        ol.replaceChildren(...result);
-        toggleSeparators(true);
-        // MIDDLE_ELEMENT_STYLE.border = 'initial'
-    }
-
-    function hideRu() {
-        hide("even")
-        show("odd")
-    }
-
-    function hideGe() {
-        hide("odd")
-        show("even")
-    }
-
-    function hide(which) {
-        document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
-    }
-
-    function show(which) {
-        document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
-    }
-
-    function showAll() {
-        document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
-    }
-
-    function toggleColor(el) {
-        const s = el.style
-        const newColor = 'rgb(168, 130, 221)'
-
-        s.backgroundColor === newColor
-            ? s.backgroundColor = 'initial'
-            : s.backgroundColor = newColor
-    }
-</script>
+<li>
+    <div class="srb">uspor<span class="stress">a</span>vati</div>
+    <div class="rus">замедлять</div>
+</li>
