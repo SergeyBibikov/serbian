@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">propis</div>
+            <div class="rus">правило, порядок</div>
+            </li>
+        
+            <li>
+            <div class="srb">pritvor</div>
+            <div class="rus">задержание, арест</div>
+            </li>
+        
+            <li>
+            <div class="srb">raspis<span class="stress">i</span>vati</div>
+            <div class="rus">объявлять в печати</div>
+            </li>
+        
+            <li>
+            <div class="srb">r<span class="stress">a</span>skršće</div>
+            <div class="rus">перекрёсток, распутье</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">o</span>metan</div>
+            <div class="rus">деловой, бойкий</div>
+            </li>
+        
+            <li>
+            <div class="srb">prija</div>
+            <div class="rus">приятельница</div>
+            </li>
+        
+            <li>
+            <div class="srb">napon</div>
+            <div class="rus">напряжение, натяжение, заряд</div>
+            </li>
+        
+            <li>
+            <div class="srb">rata</div>
+            <div class="rus">взнос, частичная выплата</div>
+            </li>
+        
+            <li>
+            <div class="srb">privl<span class="stress">a</span>čiti</div>
+            <div class="rus">притягивать, привлекать</div>
+            </li>
+        
+            <li>
+            <div class="srb">pron<span class="stress">a</span>lazak</div>
+            <div class="rus">изобретение</div>
+            </li>
+        
+            <li>
+            <div class="srb">prir<span class="stress">e</span>diti</div>
+            <div class="rus">устроить, организовать</div>
+            </li>
+        
+            <li>
+            <div class="srb">rast<span class="stress">u</span>žiti</div>
+            <div class="rus">опечалить</div>
+            </li>
+        
+            <li>
+            <div class="srb">prim<span class="stress">o</span>rati</div>
+            <div class="rus">вынудить, заставить</div>
+            </li>
+        
+            <li>
+            <div class="srb">pro<span class="stress">i</span>zvod</div>
+            <div class="rus">продукт производства, изделие</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+    </div>
+</body>
+
+<script>
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function toggleColor(el) {
+    const s = el.style
+    const newColor = 'rgb(168, 130, 221)'
+
+    s.backgroundColor === newColor
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = newColor
+}
+</script>
