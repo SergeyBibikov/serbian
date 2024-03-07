@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>tisak</div>
+            <div class="rus">впечатление, оттиск, отпечаток</div>
+            </li>
+        
+            <li>
+            <div class="srb">sp<span class="stress">o</span>razum</div>
+            <div class="rus">соглашение, договор</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>vreda</div>
+            <div class="rus">оскорбление, обида</div>
+            </li>
+        
+            <li>
+            <div class="srb">prom<span class="stress">e</span>niti</div>
+            <div class="rus">изменить, заменить, разменять деньги</div>
+            </li>
+        
+            <li>
+            <div class="srb">smer</div>
+            <div class="rus">направление, курс, намерение</div>
+            </li>
+        
+            <li>
+            <div class="srb">senka</div>
+            <div class="rus">тень</div>
+            </li>
+        
+            <li>
+            <div class="srb">sl<span class="stress">o</span>novača</div>
+            <div class="rus">слоновая кость</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">i</span>lepak</div>
+            <div class="rus">пластырь, наклейка</div>
+            </li>
+        
+            <li>
+            <div class="srb">sušt<span class="stress">i</span>na</div>
+            <div class="rus">сущность</div>
+            </li>
+        
+            <li>
+            <div class="srb">č<span class="stress">a</span>šćenje</div>
+            <div class="rus">прославление, угощение(как действие)</div>
+            </li>
+        
+            <li>
+            <div class="srb">svest</div>
+            <div class="rus">сознание, рассудок, сознательность</div>
+            </li>
+        
+            <li>
+            <div class="srb">up<span class="stress">o</span>zoriti</div>
+            <div class="rus">предостеречь, предупредить</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">i</span>hvatiti</div>
+            <div class="rus">принять (н., какой-то документ)</div>
+            </li>
+        
+            <li>
+            <div class="srb">s<span class="stress">a</span>hrana</div>
+            <div class="rus">похороны</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>nuditi se</div>
+            <div class="rus">предложить свои услуги</div>
+            </li>
+        
+            <li>
+            <div class="srb">izgubiti svest</div>
+            <div class="rus">потерять сознание</div>
+            </li>
+        
+            <li>
+            <div class="srb">sram<span class="stress">o</span>ta</div>
+            <div class="rus">стыд, позор</div>
+            </li>
+        
+            <li>
+            <div class="srb">up<span class="stress">i</span>jati</div>
+            <div class="rus">впитывать, поглощать</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+    </div>
+</body>
+
+<script>
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function toggleColor(el) {
+    const s = el.style
+    const newColor = 'rgb(168, 130, 221)'
+
+    s.backgroundColor === newColor
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = newColor
+}
+</script>
