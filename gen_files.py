@@ -8,7 +8,7 @@ from sorting import sort_items
 
 def read_new_words():
     filename = sys.argv[1] if len(sys.argv) > 1 else 'nwords.csv'
-    with open(filename) as f:
+    with open(filename, encoding='utf-8') as f:
         words = csv.reader(f, delimiter=':')
         next(words)
 
@@ -18,7 +18,7 @@ def read_new_words():
 
 def get_known_words() -> dict[str, list[str]]:
     from bs4 import BeautifulSoup
-    with open("words.html") as fp:
+    with open("words.html", encoding='utf-8') as fp:
         soup = BeautifulSoup(fp, "html.parser")
         a = soup.body.find_all('div', class_="wordPair")  # type:ignore
         known_words = {}
@@ -43,7 +43,7 @@ def generate_words_addition():
             duplicates.append(
                 f"Word '{w}' is known. Known translations are: {known_words[w]}, new translation is '{new_words[w]}'")
             del new_words[w]
-    with open(f"addition.html", mode="w") as f:
+    with open(f"addition.html", mode="w", encoding='utf-8') as f:
         env = Environment(loader=FileSystemLoader('.'))
         content = env.get_template(
             "new_words_template.txt").render(duplicates=duplicates, words=sort_items(new_words))
@@ -60,7 +60,7 @@ def generate_exercises():
 
         tmp = w[:70]
         w = w[70:]
-        with open(f"./words_learning/ex{count}.html", mode="w") as f:
+        with open(f"./words_learning/ex{count}.html", mode="w", encoding='utf-8') as f:
             env = Environment(loader=FileSystemLoader('./words_learning/'))
             shuffle(tmp)
             content = env.get_template(

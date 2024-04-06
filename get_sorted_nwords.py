@@ -5,7 +5,7 @@ from sorting import sort_serbian_words
 
 def main():
     filename = sys.argv[1] if len(sys.argv) > 1 else 'nwords.csv'
-    with open(filename) as f:
+    with open(filename, encoding='utf-8') as f:
         words = csv.reader(f, delimiter=':')
         next(words)
 
@@ -17,7 +17,7 @@ def main():
 
         words_l = sort_serbian_words(words_l)
 
-    with open('sorted_nwords.csv', 'w+') as f:
+    with open('sorted_nwords.csv', 'w+', encoding='utf-8') as f:
         w = csv.writer(f, delimiter=':')
         w.writerow(("serb", "rus"))
 
