@@ -1,3 +1,6 @@
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
 const i = document.querySelectorAll('li')
 
 document.querySelector('#count').textContent = `Всего слов: ${i.length}`
@@ -64,11 +67,22 @@ function showAll() {
     document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
 }
 
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
 function toggleColor(el) {
     const s = el.style
-    const newColor = 'rgb(168, 130, 221)'
 
-    s.backgroundColor === newColor
+    s.backgroundColor === SELECTION_COLOR
         ? s.backgroundColor = 'initial'
-        : s.backgroundColor = newColor
+        : s.backgroundColor = SELECTION_COLOR
 }

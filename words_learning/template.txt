@@ -26,6 +26,7 @@
         <button onclick=hideRu()>Only Srb</button>
         <button onclick=hideGe()>Only Ru</button>
         <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
     </div>
 </body>
 
