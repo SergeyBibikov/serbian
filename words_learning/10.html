@@ -144,82 +144,97 @@ button {
         <button onclick=hideRu()>Only Srb</button>
         <button onclick=hideGe()>Only Ru</button>
         <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
     </div>
 </body>
 
 <script>
-const i = document.querySelectorAll('li')
+    const SELECTION_COLOR = 'rgb(168, 130, 221)'
+    const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
 
-document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+    const i = document.querySelectorAll('li')
 
-i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+    document.querySelector('#count').textContent = `Всего слов: ${i.length}`
 
-toggleSeparators()
+    i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
 
-function toggleSeparators(isInitial = false) {
-    const WORDS_PER_DAY = 10
-    i.forEach((_, ind, arr) => {
-        if ((ind + 1) % WORDS_PER_DAY === 0) {
-            if (isInitial) arr[ind].style.border = 'initial';
-            else {
-                s = arr[ind].style
-                s.borderBottomColor = '#A24936'
-                s.borderBottomWidth = '1px'
-                s.borderBottomStyle = 'solid'
+    toggleSeparators()
+
+    function toggleSeparators(isInitial = false) {
+        const WORDS_PER_DAY = 10
+        i.forEach((_, ind, arr) => {
+            if ((ind + 1) % WORDS_PER_DAY === 0) {
+                if (isInitial) arr[ind].style.border = 'initial';
+                else {
+                    s = arr[ind].style
+                    s.borderBottomColor = '#A24936'
+                    s.borderBottomWidth = '1px'
+                    s.borderBottomStyle = 'solid'
+                }
             }
+        })
+    }
+
+    function shuffle() {
+        const ol = document.querySelector('ol');
+        const lis = ol.querySelectorAll('li');
+        const result = [];
+        const indexes = [];
+        for (let i = 0; i < lis.length; i++) {
+            indexes.push(i);
         }
-    })
-}
+        while (indexes.length > 0) {
+            const randomIndex = Math.floor(Math.random() * indexes.length)
+            const indexToPush = indexes[randomIndex]
+            indexes.splice(randomIndex, 1)
 
-function shuffle() {
-    const ol = document.querySelector('ol');
-    const lis = ol.querySelectorAll('li');
-    const result = [];
-    const indexes = [];
-    for (let i = 0; i < lis.length; i++) {
-        indexes.push(i);
-    }
-    while (indexes.length > 0) {
-        const randomIndex = Math.floor(Math.random() * indexes.length)
-        const indexToPush = indexes[randomIndex]
-        indexes.splice(randomIndex, 1)
+            result.push(lis[indexToPush])
+        }
 
-        result.push(lis[indexToPush])
+        ol.replaceChildren(...result);
+        toggleSeparators(true);
+        // MIDDLE_ELEMENT_STYLE.border = 'initial'
     }
 
-    ol.replaceChildren(...result);
-    toggleSeparators(true);
-    // MIDDLE_ELEMENT_STYLE.border = 'initial'
-}
+    function hideRu() {
+        hide("even")
+        show("odd")
+    }
 
-function hideRu() {
-    hide("even")
-    show("odd")
-}
+    function hideGe() {
+        hide("odd")
+        show("even")
+    }
 
-function hideGe() {
-    hide("odd")
-    show("even")
-}
+    function hide(which) {
+        document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+    }
 
-function hide(which) {
-    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
-}
+    function show(which) {
+        document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+    }
 
-function show(which) {
-    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
-}
+    function showAll() {
+        document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+    }
 
-function showAll() {
-    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
-}
+    function showForgotten() {
+        document.querySelectorAll('li').forEach(el => {
+            if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+                el.remove()
+            }
+            else{
+                el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+            }
+        })
+    }
 
-function toggleColor(el) {
-    const s = el.style
-    const newColor = 'rgb(168, 130, 221)'
+    function toggleColor(el) {
+        const s = el.style
+        s.backgroundColor === SELECTION_COLOR
+            ? s.backgroundColor = 'initial'
+            : s.backgroundColor = SELECTION_COLOR
+    }
 
-    s.backgroundColor === newColor
-        ? s.backgroundColor = 'initial'
-        : s.backgroundColor = newColor
-}
+
 </script>
