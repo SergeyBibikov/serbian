@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">pojam</div>
+            <div class="rus">понятие</div>
+            </li>
+        
+            <li>
+            <div class="srb">izlog</div>
+            <div class="rus">витрина</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>pstanak</div>
+            <div class="rus">существование</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>rednik</div>
+            <div class="rus">редактор</div>
+            </li>
+        
+            <li>
+            <div class="srb">doživlj<span class="stress">a</span>vati</div>
+            <div class="rus">доживать, переживать, переносить</div>
+            </li>
+        
+            <li>
+            <div class="srb">izraz</div>
+            <div class="rus">выражение</div>
+            </li>
+        
+            <li>
+            <div class="srb">prev<span class="stress">a</span>riti</div>
+            <div class="rus">переварить(слишком долго варить)</div>
+            </li>
+        
+            <li>
+            <div class="srb">raspon</div>
+            <div class="rus">расстояние(между точками), пролёт (н., моста)</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>sebni</div>
+            <div class="rus">отдельный, обособленный; особый, специальный</div>
+            </li>
+        
+            <li>
+            <div class="srb">obmanj<span class="stress">i</span>vati</div>
+            <div class="rus">обманывать</div>
+            </li>
+        
+            <li>
+            <div class="srb">logor</div>
+            <div class="rus">лагерь</div>
+            </li>
+        
+            <li>
+            <div class="srb">dog<span class="stress">a</span>đati se</div>
+            <div class="rus">случаться, приключаться</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">i</span>padom</div>
+            <div class="rus">мимоходом, заодно, случайно</div>
+            </li>
+        
+            <li>
+            <div class="srb">to se d<span class="stress">o</span>gađa</div>
+            <div class="rus">это бывает</div>
+            </li>
+        
+            <li>
+            <div class="srb">prež<span class="stress">i</span>veti</div>
+            <div class="rus">пережить, прожить; отжить, устареть</div>
+            </li>
+        
+            <li>
+            <div class="srb">posm<span class="stress">a</span>trač</div>
+            <div class="rus">наблюдатель</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">i</span>lika</div>
+            <div class="rus">удобный случай, подходящий момент, возможность</div>
+            </li>
+        
+            <li>
+            <div class="srb">pog<span class="stress">a</span>đati</div>
+            <div class="rus">угадывать, догадываться</div>
+            </li>
+        
+            <li>
+            <div class="srb">sm<span class="stress">i</span>šljati</div>
+            <div class="rus">придумывать, выдумывать, надумывать, решать</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">i</span>zvršan</div>
+            <div class="rus">исполнительный; подлежащий исполнению</div>
+            </li>
+        
+            <li>
+            <div class="srb">pod<span class="stress">a</span>tak</div>
+            <div class="rus">данное, сведение</div>
+            </li>
+        
+            <li>
+            <div class="srb">pover<span class="stress">e</span>nje</div>
+            <div class="rus">доверие</div>
+            </li>
+        
+            <li>
+            <div class="srb">j<span class="stress">e</span>dini</div>
+            <div class="rus">единственный</div>
+            </li>
+        
+            <li>
+            <div class="srb">pripis<span class="stress">i</span>vati</div>
+            <div class="rus">приписывать</div>
+            </li>
+        
+            <li>
+            <div class="srb">izm<span class="stress">a</span>knuti</div>
+            <div class="rus">отодвинуть; ускользнуть</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">i</span>stojno</div>
+            <div class="rus">прилично, пристойно</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">i</span>skorak</div>
+            <div class="rus">выпад, шаг вперёд</div>
+            </li>
+        
+            <li>
+            <div class="srb">leš</div>
+            <div class="rus">труп, падаль</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">e</span>variti</div>
+            <div class="rus">обмануть, провести</div>
+            </li>
+        
+            <li>
+            <div class="srb">nemam ni pojma o tome</div>
+            <div class="rus">я не имею понятия об этом</div>
+            </li>
+        
+            <li>
+            <div class="srb">isk<span class="stress">a</span>kati</div>
+            <div class="rus">выпрыгивать, выскакивать</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
+    </div>
+</body>
+
+<script>
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
+function toggleColor(el) {
+    const s = el.style
+
+    s.backgroundColor === SELECTION_COLOR
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = SELECTION_COLOR
+}
+</script>
