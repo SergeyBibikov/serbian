@@ -99,8 +99,7 @@ def sort_serbian_words(words):
 
         w_len = len(sorted_words)
         for i in range(1, w_len):
-            sorted_words[i -
-                         1], sorted_words[i] = sort_two_serbian_words(sorted_words[i-1], sorted_words[i])
+            sorted_words[i-1], sorted_words[i] = sort_two_serbian_words(sorted_words[i-1], sorted_words[i])
         if original_words == sorted_words:
             break
         else:

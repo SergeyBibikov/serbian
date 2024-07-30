@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">žustri</div>
+            <div class="rus">ловкий, проворный, шустрый</div>
+            </li>
+        
+            <li>
+            <div class="srb">g<span class="stress">u</span>rati</div>
+            <div class="rus">толкать</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">i</span>zati</div>
+            <div class="rus">поднимать, повышать, воздвигать</div>
+            </li>
+        
+            <li>
+            <div class="srb">očuh</div>
+            <div class="rus">отчим</div>
+            </li>
+        
+            <li>
+            <div class="srb">pristup</div>
+            <div class="rus">вступление, введение, подход</div>
+            </li>
+        
+            <li>
+            <div class="srb">nakit</div>
+            <div class="rus">драгоценные украшения</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">e</span>sničar</div>
+            <div class="rus">полит. правый</div>
+            </li>
+        
+            <li>
+            <div class="srb">r<span class="stress">a</span>meni</div>
+            <div class="rus">плечевой</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">a</span>mazati</div>
+            <div class="rus">намазать, втереть, нарумянить</div>
+            </li>
+        
+            <li>
+            <div class="srb">čuvar</div>
+            <div class="rus">сторож, хранитель</div>
+            </li>
+        
+            <li>
+            <div class="srb">jedn<span class="stress">a</span>kost</div>
+            <div class="rus">тождественность, равенство</div>
+            </li>
+        
+            <li>
+            <div class="srb">vr<span class="stress">i</span>štati</div>
+            <div class="rus">пронзительно кричать, визжать; ржать</div>
+            </li>
+        
+            <li>
+            <div class="srb">s<span class="stress">u</span>ptilan</div>
+            <div class="rus">тонкий, нежный</div>
+            </li>
+        
+            <li>
+            <div class="srb">odr<span class="stress">e</span>diti</div>
+            <div class="rus">определить, назначить</div>
+            </li>
+        
+            <li>
+            <div class="srb">t<span class="stress">i</span>cati</div>
+            <div class="rus">касаться, дотрагиваться; перен. затрагивать</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">o</span>diti</div>
+            <div class="rus">водить, вести</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
+    </div>
+</body>
+
+<script>
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
+function toggleColor(el) {
+    const s = el.style
+
+    s.backgroundColor === SELECTION_COLOR
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = SELECTION_COLOR
+}
+</script>
