@@ -16,11 +16,10 @@ def main():
             words_l.append(w[0])
 
         words_l = sort_serbian_words(words_l)
-
-    with open('sorted_nwords.csv', 'w+', encoding='utf-8') as f:
+    
+    with open('sorted_nwords.csv', 'w+', encoding='utf-8', newline='') as f:
         w = csv.writer(f, delimiter=':')
         w.writerow(("serb", "rus"))
-
         for wo in words_l:
             w.writerow((wo, words_d[wo]))
 
