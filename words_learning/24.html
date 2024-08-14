@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">jun<span class="stress">a</span>štvo</div>
+            <div class="rus">геройство, молодечество</div>
+            </li>
+        
+            <li>
+            <div class="srb">g<span class="stress">u</span>šiti</div>
+            <div class="rus">душить; подавлять, усмирять</div>
+            </li>
+        
+            <li>
+            <div class="srb">raz<span class="stress">u</span>mljiv</div>
+            <div class="rus">понятный, ясный</div>
+            </li>
+        
+            <li>
+            <div class="srb">ubr<span class="stress">o</span>jati</div>
+            <div class="rus">зачислить, включить в число</div>
+            </li>
+        
+            <li>
+            <div class="srb">upor<span class="stress">e</span>diti</div>
+            <div class="rus">поставить в ряд, сравнить, сопоставить</div>
+            </li>
+        
+            <li>
+            <div class="srb">l<span class="stress">u</span>dilo g<span class="stress">o</span>njenja</div>
+            <div class="rus">мания преследования</div>
+            </li>
+        
+            <li>
+            <div class="srb">nagov<span class="stress">o</span>riti</div>
+            <div class="rus">подговорить,уговорить</div>
+            </li>
+        
+            <li>
+            <div class="srb">pred<span class="stress">o</span>misliti se</div>
+            <div class="rus">раздумать, изменить мнение</div>
+            </li>
+        
+            <li>
+            <div class="srb">zatr<span class="stress">a</span>žiti</div>
+            <div class="rus">попросить, потребовать</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>peka</div>
+            <div class="rus">кирпич</div>
+            </li>
+        
+            <li>
+            <div class="srb">osetljiv</div>
+            <div class="rus">чувствительный</div>
+            </li>
+        
+            <li>
+            <div class="srb">iz<span class="stress">o</span>stati</div>
+            <div class="rus">отстать, прогулять; выпасть из поля зрения</div>
+            </li>
+        
+            <li>
+            <div class="srb">l<span class="stress">u</span>dilo</div>
+            <div class="rus">сумасшествие, безумие</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>buna</div>
+            <div class="rus">бунт, сильное недовольство</div>
+            </li>
+        
+            <li>
+            <div class="srb">prig<span class="stress">u</span>šiti</div>
+            <div class="rus">задушить; заглушить</div>
+            </li>
+        
+            <li>
+            <div class="srb">ovlaživač</div>
+            <div class="rus">увлажнитель</div>
+            </li>
+        
+            <li>
+            <div class="srb">op<span class="stress">e</span>ći</div>
+            <div class="rus">обжечь; ужалить</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">a</span>ušalan</div>
+            <div class="rus">общий, валовой</div>
+            </li>
+        
+            <li>
+            <div class="srb">proš<span class="stress">i</span>riti</div>
+            <div class="rus">расширить, распространить</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>gledati se</div>
+            <div class="rus">осмотреться; проверить свои силы</div>
+            </li>
+        
+            <li>
+            <div class="srb">otpl<span class="stress">o</span>viti</div>
+            <div class="rus">уплыть, уйти в плавание</div>
+            </li>
+        
+            <li>
+            <div class="srb">zam<span class="stress">o</span>liti</div>
+            <div class="rus">попросить</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">a</span>stava</div>
+            <div class="rus">преподавание, инструктирование</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
+    </div>
+</body>
+
+<script>
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
+function toggleColor(el) {
+    const s = el.style
+
+    s.backgroundColor === SELECTION_COLOR
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = SELECTION_COLOR
+}
+</script>
