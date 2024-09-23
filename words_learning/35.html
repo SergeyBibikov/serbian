@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">jadnik</div>
+            <div class="rus">бедняка, горемыка</div>
+            </li>
+        
+            <li>
+            <div class="srb">čep</div>
+            <div class="rus">пробка, затычка, засов</div>
+            </li>
+        
+            <li>
+            <div class="srb">sir<span class="stress">o</span>če</div>
+            <div class="rus">сирота</div>
+            </li>
+        
+            <li>
+            <div class="srb">se<span class="stress">o</span>ce</div>
+            <div class="rus">деревенька</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">a</span>dičep</div>
+            <div class="rus">штопор</div>
+            </li>
+        
+            <li>
+            <div class="srb">stv<span class="stress">o</span>ritelj</div>
+            <div class="rus">создатель, творец</div>
+            </li>
+        
+            <li>
+            <div class="srb">iselj<span class="stress">e</span>nik</div>
+            <div class="rus">переселенец, эмигрант</div>
+            </li>
+        
+            <li>
+            <div class="srb">nač<span class="stress">e</span>lo</div>
+            <div class="rus">принцип, убеждение</div>
+            </li>
+        
+            <li>
+            <div class="srb">u neku ruku</div>
+            <div class="rus">разг. в каком-то плане</div>
+            </li>
+        
+            <li>
+            <div class="srb">svetac</div>
+            <div class="rus">сущ. святой</div>
+            </li>
+        
+            <li>
+            <div class="srb">st<span class="stress">a</span>novništvo</div>
+            <div class="rus">население</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">o</span>ćište</div>
+            <div class="rus">ночлег</div>
+            </li>
+        
+            <li>
+            <div class="srb">pil<span class="stress">e</span>nce</div>
+            <div class="rus">цыплёночек, цыпочка</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>znemiren</div>
+            <div class="rus">обеспокоенный, взволнованный</div>
+            </li>
+        
+            <li>
+            <div class="srb">ne radi mi se</div>
+            <div class="rus">мне не работается</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>šteda</div>
+            <div class="rus">сбережение, экономия</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">a</span>diti</div>
+            <div class="rus">вынимать, вытаскивать, извлекать, добывать</div>
+            </li>
+        
+            <li>
+            <div class="srb">v<span class="stress">i</span>šeugaonik</div>
+            <div class="rus">многоугольник</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">e</span>dgrađe</div>
+            <div class="rus">пригород</div>
+            </li>
+        
+            <li>
+            <div class="srb">svet</div>
+            <div class="rus">прил. святой</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>tvarač</div>
+            <div class="rus">открывашка,штопор</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">o</span>pisnik</div>
+            <div class="rus">корреспондент</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">o</span>ušnik</div>
+            <div class="rus">информатор, доносчик</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>glavlje</div>
+            <div class="rus">глава в книге</div>
+            </li>
+        
+            <li>
+            <div class="srb">r<span class="stress">a</span>diti se</div>
+            <div class="rus">работаться, делаться</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">a</span>tioc</div>
+            <div class="rus">сопровождающий, спутник</div>
+            </li>
+        
+            <li>
+            <div class="srb">m<span class="stress">a</span>zivo</div>
+            <div class="rus">смазка, мазь</div>
+            </li>
+        
+            <li>
+            <div class="srb">znalac</div>
+            <div class="rus">знаток</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
+    </div>
+</body>
+
+<script>
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
+function toggleColor(el) {
+    const s = el.style
+
+    s.backgroundColor === SELECTION_COLOR
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = SELECTION_COLOR
+}
+</script>
