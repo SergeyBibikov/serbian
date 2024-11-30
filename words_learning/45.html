@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">pog<span class="stress">o</span>tovo</div>
+            <div class="rus">нареч. тем более</div>
+            </li>
+        
+            <li>
+            <div class="srb">domet</div>
+            <div class="rus">дальность полёта, досягаемость</div>
+            </li>
+        
+            <li>
+            <div class="srb">prilog</div>
+            <div class="rus">приложение; приношение, пожертвование</div>
+            </li>
+        
+            <li>
+            <div class="srb">puki</div>
+            <div class="rus">настоящий, подлинный</div>
+            </li>
+        
+            <li>
+            <div class="srb">bespr<span class="stress">e</span>koran</div>
+            <div class="rus">безукоризненный, безупречный</div>
+            </li>
+        
+            <li>
+            <div class="srb">gladac</div>
+            <div class="rus">красиво одетый человек, франт</div>
+            </li>
+        
+            <li>
+            <div class="srb">mučke</div>
+            <div class="rus">молчком, исподтишка, коварно</div>
+            </li>
+        
+            <li>
+            <div class="srb">kuk</div>
+            <div class="rus">бедро(сустав)</div>
+            </li>
+        
+            <li>
+            <div class="srb">mašta</div>
+            <div class="rus">мечта, грёза, фантазия</div>
+            </li>
+        
+            <li>
+            <div class="srb">žiža</div>
+            <div class="rus">физ. фокус</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">i</span>rtija</div>
+            <div class="rus">трактир, пивная</div>
+            </li>
+        
+            <li>
+            <div class="srb">legit<span class="stress">i</span>misati</div>
+            <div class="rus"> проверить документы у кого-л.</div>
+            </li>
+        
+            <li>
+            <div class="srb">povl<span class="stress">a</span>čiti</div>
+            <div class="rus">тянуть назад, оттягивать, оттаскивать</div>
+            </li>
+        
+            <li>
+            <div class="srb">isp<span class="stress">o</span>staviti</div>
+            <div class="rus">выставить на видное место</div>
+            </li>
+        
+            <li>
+            <div class="srb">nagl<span class="stress">a</span>siti</div>
+            <div class="rus">сделать ударение, перен. подчеркнуть</div>
+            </li>
+        
+            <li>
+            <div class="srb">unapređ<span class="stress">i</span>vati</div>
+            <div class="rus">продвигать вперёд, развивать; повышать в должности</div>
+            </li>
+        
+            <li>
+            <div class="srb">pretnja</div>
+            <div class="rus">угроза</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>smeriti</div>
+            <div class="rus">направить</div>
+            </li>
+        
+            <li>
+            <div class="srb">jedinica</div>
+            <div class="rus"> подразделение</div>
+            </li>
+        
+            <li>
+            <div class="srb">raz<span class="stress">i</span>laženje</div>
+            <div class="rus">расхождение, разногласие</div>
+            </li>
+        
+            <li>
+            <div class="srb">nedod<span class="stress">i</span>rljiv</div>
+            <div class="rus"> неприкосновенный</div>
+            </li>
+        
+            <li>
+            <div class="srb">prev<span class="stress">a</span>rant</div>
+            <div class="rus">обманщик</div>
+            </li>
+        
+            <li>
+            <div class="srb">prečnik</div>
+            <div class="rus">поперечник; диаметр</div>
+            </li>
+        
+            <li>
+            <div class="srb">za<span class="stress">u</span>staviti</div>
+            <div class="rus">приостановить, задержать</div>
+            </li>
+        
+            <li>
+            <div class="srb">str<span class="stress">a</span>dati</div>
+            <div class="rus">пострадать, погибнуть, потерпеть урон, убыток</div>
+            </li>
+        
+            <li>
+            <div class="srb">r<span class="stress">a</span>sprava</div>
+            <div class="rus">разбор, обсуждение; разбирательство</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
+    </div>
+</body>
+
+<script>
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
+function toggleColor(el) {
+    const s = el.style
+
+    s.backgroundColor === SELECTION_COLOR
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = SELECTION_COLOR
+}
+</script>
