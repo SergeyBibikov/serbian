@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>besiti</div>
+            <div class="rus">повесить</div>
+            </li>
+        
+            <li>
+            <div class="srb">ogov<span class="stress">a</span>rati</div>
+            <div class="rus">оговаривать, сплетничать, клеветать</div>
+            </li>
+        
+            <li>
+            <div class="srb">prema</div>
+            <div class="rus">(предл.) согласно чему-л.; по отношению к чему-л/кому-л.</div>
+            </li>
+        
+            <li>
+            <div class="srb">besl<span class="stress">o</span>vesan</div>
+            <div class="rus">бессловесный</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>besiti se o vrat nekome</div>
+            <div class="rus">повиснуть у кого-то на шее</div>
+            </li>
+        
+            <li>
+            <div class="srb">staza</div>
+            <div class="rus">тропинка; спорт. дорожка</div>
+            </li>
+        
+            <li>
+            <div class="srb">znati sve staze ivbogaze</div>
+            <div class="rus">знать все ходы и выходы</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>duhvat</div>
+            <div class="rus">затея, начинание</div>
+            </li>
+        
+            <li>
+            <div class="srb">z<span class="stress">a</span>pravo</div>
+            <div class="rus">действительно, в самом деле, откровенно говоря</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>pravo</div>
+            <div class="rus">точно! именно!</div>
+            </li>
+        
+            <li>
+            <div class="srb">ministarstvo pravde</div>
+            <div class="rus">министерство юстиции</div>
+            </li>
+        
+            <li>
+            <div class="srb">poj<span class="stress">u</span>riti</div>
+            <div class="rus">побежать, понестись, погнать</div>
+            </li>
+        
+            <li>
+            <div class="srb">smetnja</div>
+            <div class="rus">помеха, препятствие</div>
+            </li>
+        
+            <li>
+            <div class="srb">zar<span class="stress">o</span>biti</div>
+            <div class="rus">захватить в плен, сделать рабом</div>
+            </li>
+        
+            <li>
+            <div class="srb">nav<span class="stress">e</span>den</div>
+            <div class="rus">приведённый, указанный, процитированный</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">a</span>ština</div>
+            <div class="rus">наследство, право собственности</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">a</span>mestiti</div>
+            <div class="rus">разместить, расположить, пристроить</div>
+            </li>
+        
+            <li>
+            <div class="srb">spomenuti</div>
+            <div class="rus">упомянуть</div>
+            </li>
+        
+            <li>
+            <div class="srb">čin</div>
+            <div class="rus">поступок, действие</div>
+            </li>
+        
+            <li>
+            <div class="srb">mitr<span class="stress">a</span>ljez</div>
+            <div class="rus">пулемёт</div>
+            </li>
+        
+            <li>
+            <div class="srb">zbogom</div>
+            <div class="rus">прощай(те)!</div>
+            </li>
+        
+            <li>
+            <div class="srb">udr<span class="stress">u</span>žiti</div>
+            <div class="rus">объединить</div>
+            </li>
+        
+            <li>
+            <div class="srb">z<span class="stress">a</span>loga</div>
+            <div class="rus">заклад, залог</div>
+            </li>
+        
+            <li>
+            <div class="srb">odv<span class="stress">e</span>sti</div>
+            <div class="rus">отвести, отвезти, увезти</div>
+            </li>
+        
+            <li>
+            <div class="srb">k<span class="stress">u</span>kavica</div>
+            <div class="rus">кукушка; трус, трусиха, несчастный человек</div>
+            </li>
+        
+            <li>
+            <div class="srb">drum</div>
+            <div class="rus">шоссе, большая проезжая дорога</div>
+            </li>
+        
+            <li>
+            <div class="srb">bato</div>
+            <div class="rus">(обращение) братец, браток</div>
+            </li>
+        
+            <li>
+            <div class="srb">bogaz</div>
+            <div class="rus">теснина, узкий проход</div>
+            </li>
+        
+            <li>
+            <div class="srb">g<span class="stress">o</span>tivan</div>
+            <div class="rus">(разг., о человеке) хороший, путный </div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
+    </div>
+</body>
+
+<script>
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
+function toggleColor(el) {
+    const s = el.style
+
+    s.backgroundColor === SELECTION_COLOR
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = SELECTION_COLOR
+}
+</script>
