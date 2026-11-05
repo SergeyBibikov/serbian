@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style> 
+body {
+    font-size: max(3vw, 16px);
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li>div:nth-of-type(1) {
+    font-family: sans-serif;
+}
+
+li:after {
+    content: '';
+    display: inline-block;
+    width: 200%;
+    height: 100%;
+    margin: -1px -100% 1px 0;
+    border-bottom: 1px dotted rgb(86, 82, 82);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+}
+
+.stress {
+    color: rgb(208, 80, 80);
+} 
+</style>
+
+<body>
+    <ol>
+        
+            <li>
+            <div class="srb">ukrc<span class="stress">a</span>vanje</div>
+            <div class="rus"> посадка(на самолёт, поезд, пароход)</div>
+            </li>
+        
+            <li>
+            <div class="srb">razvedr<span class="stress">a</span>vanje</div>
+            <div class="rus">прояснение (о погоде)</div>
+            </li>
+        
+            <li>
+            <div class="srb">privl<span class="stress">a</span>čiti</div>
+            <div class="rus">притягивать, подтягивать к себе; привлекать</div>
+            </li>
+        
+            <li>
+            <div class="srb">d<span class="stress">o</span>godi se da...</div>
+            <div class="rus">бывает, что...</div>
+            </li>
+        
+            <li>
+            <div class="srb">na brzaka</div>
+            <div class="rus">на скорую руку</div>
+            </li>
+        
+            <li>
+            <div class="srb">aman</div>
+            <div class="rus">милость, пощада; вера, вероисповедание</div>
+            </li>
+        
+            <li>
+            <div class="srb">dog<span class="stress">o</span>diti</div>
+            <div class="rus">попасть, угодить</div>
+            </li>
+        
+            <li>
+            <div class="srb">minđuše</div>
+            <div class="rus"> серьги</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">i</span>stovar</div>
+            <div class="rus">выгрузка, разгрузка</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>bračun</div>
+            <div class="rus">расчёт; расправа</div>
+            </li>
+        
+            <li>
+            <div class="srb">gr<span class="stress">a</span>divo</div>
+            <div class="rus">материал(литературный, научный)</div>
+            </li>
+        
+            <li>
+            <div class="srb">prek<span class="stress">o</span>vremen</div>
+            <div class="rus">сверхурочный</div>
+            </li>
+        
+            <li>
+            <div class="srb">top</div>
+            <div class="rus">пушка</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">a</span>vodno</div>
+            <div class="rus">предположительно, якобы</div>
+            </li>
+        
+            <li>
+            <div class="srb">p<span class="stress">o</span>uka</div>
+            <div class="rus">поучение, наставление, урок</div>
+            </li>
+        
+            <li>
+            <div class="srb">rulja</div>
+            <div class="rus">(негат.) толпа, орава, сброд</div>
+            </li>
+        
+            <li>
+            <div class="srb">m<span class="stress">i</span>govac</div>
+            <div class="rus">поворотник</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">i</span>vlačan</div>
+            <div class="rus">привлекательный</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">o</span>bustava</div>
+            <div class="rus">прекращение, приостановка</div>
+            </li>
+        
+            <li>
+            <div class="srb">baklja</div>
+            <div class="rus">факел; (перен.) светоч</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">a</span>duvan</div>
+            <div class="rus">накуренный</div>
+            </li>
+        
+            <li>
+            <div class="srb">gurtne</div>
+            <div class="rus">лямки спортивные</div>
+            </li>
+        
+    </ol>
+    <div id="count"></div>
+    <div class="controls">
+        <button onclick=shuffle()>Shuffle</button>
+        <button onclick=hideRu()>Only Srb</button>
+        <button onclick=hideGe()>Only Ru</button>
+        <button onclick=showAll()>All</button>
+        <button onclick=showForgotten()>Only Forgotten</button>
+    </div>
+</body>
+
+<script>
+const SELECTION_COLOR = 'rgb(168, 130, 221)'
+const COLOR_FOR_FORGOTTEN = 'rgb(237, 255, 237)'
+
+const i = document.querySelectorAll('li')
+
+document.querySelector('#count').textContent = `Всего слов: ${i.length}`
+
+i.forEach(el => el.addEventListener('click', () => toggleColor(el)))
+
+toggleSeparators()
+
+function toggleSeparators(isInitial = false) {
+    const WORDS_PER_DAY = 10
+    i.forEach((_, ind, arr) => {
+        if ((ind + 1) % WORDS_PER_DAY === 0) {
+            if (isInitial) arr[ind].style.border = 'initial';
+            else {
+                s = arr[ind].style
+                s.borderBottomColor = '#A24936'
+                s.borderBottomWidth = '1px'
+                s.borderBottomStyle = 'solid'
+            }
+        }
+    })
+}
+
+function shuffle() {
+    const ol = document.querySelector('ol');
+    const lis = ol.querySelectorAll('li');
+    const result = [];
+    const indexes = [];
+    for (let i = 0; i < lis.length; i++) {
+        indexes.push(i);
+    }
+    while (indexes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * indexes.length)
+        const indexToPush = indexes[randomIndex]
+        indexes.splice(randomIndex, 1)
+
+        result.push(lis[indexToPush])
+    }
+
+    ol.replaceChildren(...result);
+    toggleSeparators(true);
+    // MIDDLE_ELEMENT_STYLE.border = 'initial'
+}
+
+function hideRu() {
+    hide("even")
+    show("odd")
+}
+
+function hideGe() {
+    hide("odd")
+    show("even")
+}
+
+function hide(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "hidden")
+}
+
+function show(which) {
+    document.querySelectorAll(`li div:nth-child(${which})`).forEach(i => i.style.visibility = "visible")
+}
+
+function showAll() {
+    document.querySelectorAll(`li div`).forEach(i => i.style.visibility = "visible")
+}
+
+function showForgotten() {
+    document.querySelectorAll('li').forEach(el => {
+        if (!(el.style.backgroundColor === SELECTION_COLOR)) {
+            el.remove()
+        }
+        else{
+            el.style.backgroundColor = COLOR_FOR_FORGOTTEN
+        }
+    })
+}
+
+
+function toggleColor(el) {
+    const s = el.style
+
+    s.backgroundColor === SELECTION_COLOR
+        ? s.backgroundColor = 'initial'
+        : s.backgroundColor = SELECTION_COLOR
+}
+</script>
