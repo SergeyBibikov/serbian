@@ -8,7 +8,7 @@
 </head>
 
 <style> 
-{%include './styles.css'%} 
+{%include './stylesNew.css'%} 
 </style>
 
 <body>

@@ -1,0 +1,175 @@
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --text: #1f2430;
+  --muted: #667085;
+  --line: #e1e5ec;
+  --accent: #3b5bdb;
+  --stress: #d6336c;
+  --mark: #e3e8ff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161b;
+    --surface: #1d2027;
+    --text: #eceef3;
+    --muted: #9aa1b2;
+    --line: #2e323c;
+    --accent: #8da2fb;
+    --stress: #ff7aa8;
+    --mark: #2b3358;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(16px, 1.2vw + 12px, 22px);
+  line-height: 1.4;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 110px;
+}
+
+#count {
+  color: var(--muted);
+  font-size: 0.8em;
+  margin-bottom: 12px;
+}
+
+ol {
+  list-style: none;
+  counter-reset: w;
+  margin: 0;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+li {
+  counter-increment: w;
+  display: grid;
+  grid-template-columns: 2.5em 1fr 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+li:last-child {
+  border-bottom: 0;
+}
+li:hover {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+li::before {
+  content: counter(w);
+  text-align: right;
+  color: var(--muted);
+  font-size: 0.75em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* a heavier line after every 10th word (one "day"); off after shuffle/filter */
+ol:not(.no-days):not(.only-forgotten) li:nth-child(10n):not(:last-child) {
+  border-bottom: 2px solid var(--accent);
+}
+
+/* "Only Forgotten" toggle: hide everything that is not marked */
+ol.only-forgotten li:not(.marked) {
+  display: none;
+}
+ol.only-forgotten {
+  border-bottom: 0;
+}
+
+.srb {
+  font-weight: 600;
+}
+.rus {
+  color: var(--muted);
+}
+
+.stress {
+  color: var(--stress);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+li.marked {
+  background: var(--mark);
+}
+li.marked:hover {
+  background: var(--mark);
+}
+
+/* hide modes */
+ol.only-srb .rus {
+  visibility: hidden;
+}
+ol.only-ru .srb {
+  visibility: hidden;
+}
+
+.controls {
+  position: fixed;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line);
+}
+
+button {
+  font: inherit;
+  font-size: 0.8em;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+@media (max-width: 520px) {
+  main {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  li {
+    grid-template-columns: 1.6em 1fr 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+  .srb,
+  .rus {
+    overflow-wrap: anywhere;
+  }
+  .rus {
+    font-size: 0.9em;
+  }
+}
