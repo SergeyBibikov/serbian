@@ -6,8 +6,8 @@ function updateCount() {
   const marked = ol.querySelectorAll("li.marked").length;
   countEl.textContent =
     ol.classList.contains("only-forgotten") && marked === 0
-      ? "Отмеченных слов нет. Нажмите «Only Forgotten», чтобы вернуть весь список."
-      : `Всего слов: ${total}, отмечено: ${marked}`;
+      ? "Выбранных слов нет. Нажмите «Только выбранные», чтобы вернуть весь список."
+      : `Всего слов: ${total}, выбрано: ${marked}`;
 }
 
 ol.addEventListener("click", (e) => {

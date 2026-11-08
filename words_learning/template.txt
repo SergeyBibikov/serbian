@@ -23,11 +23,11 @@
     </ol>
 </main>
     <div class="controls">
-        <button onclick=shuffle()>Shuffle</button>
-        <button id="b-srb" onclick="setMode('only-srb')">Only Srb</button>
-        <button id="b-ru" onclick="setMode('only-ru')">Only Ru</button>
-        <button id="b-all" class="active" onclick="setMode('')">All</button>
-        <button id="b-forgotten" onclick="toggleForgotten()">Only Forgotten</button>
+        <button onclick=shuffle()>🔀</button>
+        <button id="b-srb" onclick="setMode('only-srb')">Только 🇷🇸</button>
+        <button id="b-ru" onclick="setMode('only-ru')">Только 🇷🇺</button>
+        <button id="b-all" class="active" onclick="setMode('')">Все</button>
+        <button id="b-forgotten" onclick="toggleForgotten()">Только выбранные</button>
     </div>
 </body>
 
