@@ -2,7 +2,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -12,6 +11,8 @@
 </style>
 
 <body>
+<main>
+    <div id="count"></div>
     <ol>
         {% for word in words %}
             <li>
@@ -20,16 +21,16 @@
             </li>
         {% endfor %}
     </ol>
-    <div id="count"></div>
+</main>
     <div class="controls">
         <button onclick=shuffle()>Shuffle</button>
-        <button onclick=hideRu()>Only Srb</button>
-        <button onclick=hideGe()>Only Ru</button>
-        <button onclick=showAll()>All</button>
-        <button onclick=showForgotten()>Only Forgotten</button>
+        <button id="b-srb" onclick="setMode('only-srb')">Only Srb</button>
+        <button id="b-ru" onclick="setMode('only-ru')">Only Ru</button>
+        <button id="b-all" class="active" onclick="setMode('')">All</button>
+        <button id="b-forgotten" onclick="toggleForgotten()">Only Forgotten</button>
     </div>
 </body>
 
 <script>
-{%include './scripts.js'%}
+{%include './scriptNew.js'%}
 </script>
