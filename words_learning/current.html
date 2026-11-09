@@ -1,574 +1,345 @@
-<!doctype html>
-<html lang="sr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Srpski rečnik</title>
-    <style>
-      :root {
-        --bg: #f4f6f9;
-        --surface: #ffffff;
-        --text: #1f2430;
-        --muted: #667085;
-        --line: #e1e5ec;
-        --accent: #3b5bdb;
-        --stress: #d6336c;
-        --mark: #e3e8ff;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #14161b;
-          --surface: #1d2027;
-          --text: #eceef3;
-          --muted: #9aa1b2;
-          --line: #2e323c;
-          --accent: #8da2fb;
-          --stress: #ff7aa8;
-          --mark: #2b3358;
-        }
-      }
+<!DOCTYPE html>
 
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: system-ui, "Segoe UI", Roboto, sans-serif;
-        font-size: clamp(16px, 1.2vw + 12px, 22px);
-        line-height: 1.4;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      main {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 24px 16px 110px;
-      }
+</head>
 
-      #count {
-        color: var(--muted);
-        font-size: 0.8em;
-        margin-bottom: 12px;
-      }
+<style> 
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --text: #1f2430;
+  --muted: #667085;
+  --line: #e1e5ec;
+  --accent: #3b5bdb;
+  --stress: #d6336c;
+  --mark: #e3e8ff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161b;
+    --surface: #1d2027;
+    --text: #eceef3;
+    --muted: #9aa1b2;
+    --line: #2e323c;
+    --accent: #8da2fb;
+    --stress: #ff7aa8;
+    --mark: #2b3358;
+  }
+}
 
-      ol {
-        list-style: none;
-        counter-reset: w;
-        margin: 0;
-        padding: 0;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        overflow: hidden;
-      }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(16px, 1.2vw + 12px, 22px);
+  line-height: 1.4;
+}
 
-      li {
-        counter-increment: w;
-        display: grid;
-        grid-template-columns: 2.5em 1fr 1fr;
-        gap: 12px;
-        align-items: baseline;
-        padding: 12px 16px;
-        border-bottom: 1px solid var(--line);
-        cursor: pointer;
-        transition: background 0.15s;
-      }
-      li:last-child {
-        border-bottom: 0;
-      }
-      li:hover {
-        background: color-mix(in srgb, var(--accent) 7%, transparent);
-      }
-      li::before {
-        content: counter(w);
-        text-align: right;
-        color: var(--muted);
-        font-size: 0.75em;
-        font-variant-numeric: tabular-nums;
-      }
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 110px;
+}
 
-      /* a heavier line after every 10th word (one "day"); off after shuffle/filter */
-      ol:not(.no-days):not(.only-forgotten) li:nth-child(10n):not(:last-child) {
-        border-bottom: 2px solid var(--accent);
-      }
+#count {
+  color: var(--muted);
+  font-size: 0.8em;
+  margin-bottom: 12px;
+}
 
-      /* "Only Forgotten" toggle: hide everything that is not marked */
-      ol.only-forgotten li:not(.marked) {
-        display: none;
-      }
-      ol.only-forgotten {
-        border-bottom: 0;
-      }
+ol {
+  list-style: none;
+  counter-reset: w;
+  margin: 0;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-      .srb {
-        font-weight: 600;
-      }
-      .rus {
-        color: var(--muted);
-      }
+li {
+  counter-increment: w;
+  display: grid;
+  grid-template-columns: 2.5em 1fr 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+li:last-child {
+  border-bottom: 0;
+}
+li:hover {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+li::before {
+  content: counter(w);
+  text-align: right;
+  color: var(--muted);
+  font-size: 0.75em;
+  font-variant-numeric: tabular-nums;
+}
 
-      .stress {
-        color: var(--stress);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
+/* a heavier line after every 10th word (one "day"); off after shuffle/filter */
+ol:not(.no-days):not(.only-forgotten) li:nth-child(10n):not(:last-child) {
+  border-bottom: 2px solid var(--accent);
+}
 
-      li.marked {
-        background: var(--mark);
-      }
-      li.marked:hover {
-        background: var(--mark);
-      }
+/* "Only Forgotten" toggle: hide everything that is not marked */
+ol.only-forgotten li:not(.marked) {
+  display: none;
+}
+ol.only-forgotten {
+  border-bottom: 0;
+}
 
-      /* hide modes */
-      ol.only-srb .rus {
-        visibility: hidden;
-      }
-      ol.only-ru .srb {
-        visibility: hidden;
-      }
+.srb {
+  font-weight: 600;
+}
+.rus {
+  color: var(--muted);
+}
 
-      .controls {
-        position: fixed;
-        inset: auto 0 0 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        padding: 12px;
-        background: color-mix(in srgb, var(--bg) 85%, transparent);
-        backdrop-filter: blur(8px);
-        border-top: 1px solid var(--line);
-      }
+.stress {
+  color: var(--stress);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
-      button {
-        font: inherit;
-        font-size: 0.8em;
-        padding: 8px 14px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: var(--surface);
-        color: var(--text);
-        cursor: pointer;
-      }
-      button:hover {
-        border-color: var(--accent);
-      }
-      button:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 2px;
-      }
-      button.active {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: var(--bg);
-      }
+li.marked {
+  background: var(--mark);
+}
+li.marked:hover {
+  background: var(--mark);
+}
 
-      @media (max-width: 520px) {
-        main {
-          padding-left: 8px;
-          padding-right: 8px;
-        }
-        li {
-          grid-template-columns: 1.6em 1fr 1fr;
-          gap: 8px;
-          padding: 10px;
-        }
-        .srb,
-        .rus {
-          overflow-wrap: anywhere;
-        }
-        .rus {
-          font-size: 0.9em;
-        }
-      }
-    </style>
-  </head>
+/* hide modes */
+ol.only-srb .rus {
+  visibility: hidden;
+}
+ol.only-ru .srb {
+  visibility: hidden;
+}
 
-  <body>
-    <main>
-      <div id="count"></div>
-      <ol>
-        <li>
-          <div class="srb">poljod<span class="stress">e</span>lac</div>
-          <div class="rus">земледелец, хлебопашец</div>
-        </li>
-        <li>
-          <div class="srb">niži</div>
-          <div class="rus">низший</div>
-        </li>
-        <li>
-          <div class="srb">depo</div>
-          <div class="rus">депо, склад</div>
-        </li>
-        <li>
-          <div class="srb">bes</div>
-          <div class="rus">ярость, злоба, бешенство</div>
-        </li>
-        <li>
-          <div class="srb">d<span class="stress">a</span>vati</div>
-          <div class="rus">давать, выдавать</div>
-        </li>
-        <li>
-          <div class="srb">z<span class="stress">a</span>uvek</div>
-          <div class="rus">навсегда</div>
-        </li>
-        <li>
-          <div class="srb">održ<span class="stress">a</span>vati</div>
-          <div class="rus">сохранять, поддерживать</div>
-        </li>
-        <li>
-          <div class="srb">zbr<span class="stress">i</span>nuti</div>
-          <div class="rus">обеспечить</div>
-        </li>
-        <li>
-          <div class="srb">os<span class="stress">u</span>mnjičiti</div>
-          <div class="rus">заподозрить</div>
-        </li>
-        <li>
-          <div class="srb">meta</div>
-          <div class="rus">цель, мишень</div>
-        </li>
-        <li>
-          <div class="srb">isplać<span class="stress">i</span>vati</div>
-          <div class="rus">выплачивать</div>
-        </li>
-        <li>
-          <div class="srb">g<span class="stress">o</span>tovo</div>
-          <div class="rus">наличные деньги</div>
-        </li>
-        <li>
-          <div class="srb">već<span class="stress">i</span>na</div>
-          <div class="rus">большинство</div>
-        </li>
-        <li>
-          <div class="srb">pokret</div>
-          <div class="rus">движение, передвижение</div>
-        </li>
-        <li>
-          <div class="srb">naklon</div>
-          <div class="rus">поклон, приветствие</div>
-        </li>
-        <li>
-          <div class="srb">nezadov<span class="stress">o</span>ljstvo</div>
-          <div class="rus">недовольство</div>
-        </li>
-        <li>
-          <div class="srb">p<span class="stress">o</span>dručje</div>
-          <div class="rus">территория, край, подведомственная область</div>
-        </li>
-        <li>
-          <div class="srb">b<span class="stress">i</span>rački</div>
-          <div class="rus">избирательный (напр., бюллетень)</div>
-        </li>
-        <li>
-          <div class="srb">p<span class="stress">o</span>zivnica</div>
-          <div class="rus">пригласительный билет, повестка</div>
-        </li>
-        <li>
-          <div class="srb">berza</div>
-          <div class="rus">биржа</div>
-        </li>
-        <li>
-          <div class="srb">ž<span class="stress">a</span>liti</div>
-          <div class="rus">жалеть, скорбеть, оплакивать</div>
-        </li>
-        <li>
-          <div class="srb"><span class="stress">o</span>dvojen</div>
-          <div class="rus">отдельный, выделенный</div>
-        </li>
-        <li>
-          <div class="srb">dalje</div>
-          <div class="rus">всё ещё, далее</div>
-        </li>
-        <li>
-          <div class="srb">jastog</div>
-          <div class="rus">омар</div>
-        </li>
-        <li>
-          <div class="srb">junak</div>
-          <div class="rus">герой, молодец</div>
-        </li>
-        <li>
-          <div class="srb">pesma</div>
-          <div class="rus">песня</div>
-        </li>
-        <li>
-          <div class="srb">p<span class="stress">e</span>vati</div>
-          <div class="rus">петь</div>
-        </li>
-        <li>
-          <div class="srb">ipak</div>
-          <div class="rus">всё же, всё-таки, однако, впрочем</div>
-        </li>
-        <li>
-          <div class="srb">kopno</div>
-          <div class="rus">суша, материк, земля</div>
-        </li>
-        <li>
-          <div class="srb">gl<span class="stress">a</span>sački</div>
-          <div class="rus">избирательный, предусмотренный для голосования</div>
-        </li>
-        <li>
-          <div class="srb">metak</div>
-          <div class="rus">пуля, выстрел</div>
-        </li>
-        <li>
-          <div class="srb"><span class="stress">o</span>tmica</div>
-          <div class="rus">похищение</div>
-        </li>
-        <li>
-          <div class="srb">ge<span class="stress">o</span>detski</div>
-          <div class="rus">геодезический</div>
-        </li>
-        <li>
-          <div class="srb">pojevt<span class="stress">i</span>niti</div>
-          <div class="rus">подешеветь, удешевить</div>
-        </li>
-        <li>
-          <div class="srb">drug<span class="stress">a</span>čije</div>
-          <div class="rus">иначе, по-другому</div>
-        </li>
-        <li>
-          <div class="srb">pluće</div>
-          <div class="rus">лёгкое (анат.)</div>
-        </li>
-        <li>
-          <div class="srb">d<span class="stress">i</span>gnuti</div>
-          <div class="rus">поднять, повысить</div>
-        </li>
-        <li>
-          <div class="srb">z<span class="stress">a</span>lupiti</div>
-          <div class="rus">захлопнуть</div>
-        </li>
-        <li>
-          <div class="srb">nap<span class="stress">u</span>stiti</div>
-          <div class="rus">оставить, покинуть</div>
-        </li>
-        <li>
-          <div class="srb">biser</div>
-          <div class="rus">жемчуг</div>
-        </li>
-        <li>
-          <div class="srb">ob<span class="stress">o</span>riti</div>
-          <div class="rus">свалить, сбить, срубить</div>
-        </li>
-        <li>
-          <div class="srb"><span class="stress">i</span>zlazak</div>
-          <div class="rus">выход, восход</div>
-        </li>
-        <li>
-          <div class="srb"><span class="stress">o</span>sveta</div>
-          <div class="rus">месть, отмщение</div>
-        </li>
-        <li>
-          <div class="srb">dož<span class="stress">i</span>veti</div>
-          <div class="rus">переживать, испытывать</div>
-        </li>
-        <li>
-          <div class="srb">lonac</div>
-          <div class="rus">горшок, кастрюля</div>
-        </li>
-        <li>
-          <div class="srb"><span class="stress">o</span>brnuto</div>
-          <div class="rus">наоборот, напротив</div>
-        </li>
-        <li>
-          <div class="srb">n<span class="stress">a</span>stavljati</div>
-          <div class="rus">продолжать, удлинять</div>
-        </li>
-        <li>
-          <div class="srb">dosad</div>
-          <div class="rus">до сих пор, до настоящего времени</div>
-        </li>
-        <li>
-          <div class="srb">pos<span class="stress">u</span>stati</div>
-          <div class="rus">устать, утомиться</div>
-        </li>
-        <li>
-          <div class="srb">dosadno</div>
-          <div class="rus">скучно</div>
-        </li>
-        <li>
-          <div class="srb">nered</div>
-          <div class="rus">беспорядок</div>
-        </li>
-        <li>
-          <div class="srb">konv<span class="stress">e</span>rzija</div>
-          <div class="rus">конверсия, изменение убеждений</div>
-        </li>
-        <li>
-          <div class="srb">odj<span class="stress">e</span>knuti</div>
-          <div class="rus">прозвучать, раздаться</div>
-        </li>
-        <li>
-          <div class="srb">prekop<span class="stress">u</span>ta</div>
-          <div class="rus">против, напротив</div>
-        </li>
-        <li>
-          <div class="srb">navod</div>
-          <div class="rus">ссылка, цитата</div>
-        </li>
-        <li>
-          <div class="srb">iznad</div>
-          <div class="rus">над; сверх</div>
-        </li>
-        <li>
-          <div class="srb">p<span class="stress">o</span>kretan</div>
-          <div class="rus">передвижной, движимый</div>
-        </li>
-        <li>
-          <div class="srb">n<span class="stress">a</span>predovati</div>
-          <div class="rus">прогрессировать, развиваться</div>
-        </li>
-        <li>
-          <div class="srb">p<span class="stress">o</span>dmetnuti</div>
-          <div class="rus">подложить, подставить, подбросить</div>
-        </li>
-        <li>
-          <div class="srb">zavod</div>
-          <div class="rus">заведение, институт, учреждение</div>
-        </li>
-        <li>
-          <div class="srb">d<span class="stress">o</span>sada</div>
-          <div class="rus">скука</div>
-        </li>
-        <li>
-          <div class="srb">pr<span class="stress">e</span>stignuti</div>
-          <div class="rus">обогнать, перегнать</div>
-        </li>
-        <li>
-          <div class="srb">za<span class="stress">u</span>staviti</div>
-          <div class="rus">остановить, задержать</div>
-        </li>
-        <li>
-          <div class="srb">br<span class="stress">u</span>jati</div>
-          <div class="rus">гудеть, звенеть, рокотать</div>
-        </li>
-        <li>
-          <div class="srb">poljopr<span class="stress">i</span>vrednik</div>
-          <div class="rus">работник сельского хозяйства</div>
-        </li>
-        <li>
-          <div class="srb">gl<span class="stress">a</span>sanje</div>
-          <div class="rus">голосование</div>
-        </li>
-        <li>
-          <div class="srb">n<span class="stress">a</span>predak</div>
-          <div class="rus">прогресс, успех</div>
-        </li>
-        <li>
-          <div class="srb">p<span class="stress">o</span>ljubac</div>
-          <div class="rus">поцелуй</div>
-        </li>
-        <li>
-          <div class="srb">d<span class="stress">o</span>kazni</div>
-          <div class="rus">служащий для доказательства</div>
-        </li>
-        <li>
-          <div class="srb">praksa</div>
-          <div class="rus">практика</div>
-        </li>
-        <li>
-          <div class="srb">odl<span class="stress">u</span>čiti</div>
-          <div class="rus">решить, принять решение, резолюцию</div>
-        </li>
-        <li>
-          <div class="srb">gotov</div>
-          <div class="rus">готовый, законченный</div>
-        </li>
-        <li>
-          <div class="srb"><span class="stress">i</span>ako</div>
-          <div class="rus">хотя и; несмотря на то, что</div>
-        </li>
-        <li>
-          <div class="srb">odlika</div>
-          <div class="rus">отличие, особенность</div>
-        </li>
-        <li>
-          <div class="srb">z<span class="stress">a</span>brana</div>
-          <div class="rus">запрет, наложение ареста</div>
-        </li>
-        <li>
-          <div class="srb">potez</div>
-          <div class="rus">движение, жест, штрих, черта</div>
-        </li>
-        <li>
-          <div class="srb">zabrinj<span class="stress">a</span>vati</div>
-          <div class="rus">заботить, беспокоить</div>
-        </li>
-        <li>
-          <div class="srb">is<span class="stress">e</span>liti</div>
-          <div class="rus">выселить</div>
-        </li>
-        <li>
-          <div class="srb">n<span class="stress">a</span>terati</div>
-          <div class="rus">заставить, принудить, загнать</div>
-        </li>
-        <li>
-          <div class="srb">p<span class="stress">o</span>stignuti</div>
-          <div class="rus">добиться, достигнуть</div>
-        </li>
-      </ol>
-    </main>
+.controls {
+  position: fixed;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line);
+}
 
+button {
+  font: inherit;
+  font-size: 0.8em;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+@media (max-width: 520px) {
+  main {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  li {
+    grid-template-columns: 1.6em 1fr 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+  .srb,
+  .rus {
+    overflow-wrap: anywhere;
+  }
+  .rus {
+    font-size: 0.9em;
+  }
+} 
+</style>
+
+<body>
+<main>
+    <div id="count"></div>
+    <ol>
+        
+            <li>
+            <div class="srb">t<span class="stress">a</span>ština</div>
+            <div class="rus">тщета, суетность</div>
+            </li>
+        
+            <li>
+            <div class="srb">krofna</div>
+            <div class="rus">пончик</div>
+            </li>
+        
+            <li>
+            <div class="srb">pr<span class="stress">o</span>maja</div>
+            <div class="rus">сквозняк</div>
+            </li>
+        
+            <li>
+            <div class="srb">prodor</div>
+            <div class="rus">прорыв, грыжа</div>
+            </li>
+        
+            <li>
+            <div class="srb">švaler</div>
+            <div class="rus">любовник</div>
+            </li>
+        
+            <li>
+            <div class="srb">šr<span class="stress">a</span>fciger</div>
+            <div class="rus">отвёртка</div>
+            </li>
+        
+            <li>
+            <div class="srb">na t<span class="stress">a</span>štinu</div>
+            <div class="rus"> натощак</div>
+            </li>
+        
+            <li>
+            <div class="srb">n<span class="stress">e</span>odlučan</div>
+            <div class="rus">нерешительный</div>
+            </li>
+        
+            <li>
+            <div class="srb">istraž<span class="stress">i</span>vački</div>
+            <div class="rus">исследовательский; следственный</div>
+            </li>
+        
+            <li>
+            <div class="srb">govor<span class="stress">a</span>ncija</div>
+            <div class="rus">пустословие, словоблудие</div>
+            </li>
+        
+            <li>
+            <div class="srb">b<span class="stress">e</span>zobziran</div>
+            <div class="rus">дерзкий, бессовестный</div>
+            </li>
+        
+            <li>
+            <div class="srb">l<span class="stress">a</span>bilan</div>
+            <div class="rus">неустойчивый, нетвёрдый</div>
+            </li>
+        
+            <li>
+            <div class="srb">prit<span class="stress">e</span>zati šr<span class="stress">a</span>fove</div>
+            <div class="rus"> закручивать гайки</div>
+            </li>
+        
+            <li>
+            <div class="srb">vašar</div>
+            <div class="rus">ярмарка; суета, суматоха</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>pržen</div>
+            <div class="rus">поджаренный, обжаренный</div>
+            </li>
+        
+            <li>
+            <div class="srb">slama</div>
+            <div class="rus">солома</div>
+            </li>
+        
+            <li>
+            <div class="srb">t<span class="stress">u</span>žbalica</div>
+            <div class="rus">причитание, плач; грустная песня; плакальщица</div>
+            </li>
+        
+            <li>
+            <div class="srb"><span class="stress">u</span>viđaj</div>
+            <div class="rus">обследование, осмотр</div>
+            </li>
+        
+            <li>
+            <div class="srb">vele<span class="stress">i</span>zdaja</div>
+            <div class="rus">гос. измена</div>
+            </li>
+        
+    </ol>
+</main>
     <div class="controls">
-      <button onclick="shuffle()">Shuffle</button>
-      <button id="b-srb" onclick="setMode('only-srb')">Only Srb</button>
-      <button id="b-ru" onclick="setMode('only-ru')">Only Ru</button>
-      <button id="b-all" class="active" onclick="setMode('')">All</button>
-      <button id="b-forgotten" onclick="toggleForgotten()">
-        Only Forgotten
-      </button>
+        <button onclick=shuffle()>🔀</button>
+        <button id="b-srb" onclick="setMode('only-srb')">Только 🇷🇸</button>
+        <button id="b-ru" onclick="setMode('only-ru')">Только 🇷🇺</button>
+        <button id="b-all" class="active" onclick="setMode('')">Все</button>
+        <button id="b-forgotten" onclick="toggleForgotten()">Только выбранные</button>
     </div>
+</body>
 
-    <script>
-      const ol = document.querySelector("ol");
-      const countEl = document.querySelector("#count");
+<script>
+const ol = document.querySelector("ol");
+const countEl = document.querySelector("#count");
 
-      function updateCount() {
-        const total = ol.children.length;
-        const marked = ol.querySelectorAll("li.marked").length;
-        countEl.textContent =
-          ol.classList.contains("only-forgotten") && marked === 0
-            ? "Отмеченных слов нет. Нажмите «Only Forgotten», чтобы вернуть весь список."
-            : `Всего слов: ${total}, отмечено: ${marked}`;
-      }
+function updateCount() {
+  const total = ol.children.length;
+  const marked = ol.querySelectorAll("li.marked").length;
+  countEl.textContent =
+    ol.classList.contains("only-forgotten") && marked === 0
+      ? "Выбранных слов нет. Нажмите «Только выбранные», чтобы вернуть весь список."
+      : `Всего слов: ${total}, выбрано: ${marked}`;
+}
 
-      ol.addEventListener("click", (e) => {
-        const li = e.target.closest("li");
-        if (!li) return;
-        li.classList.toggle("marked");
-        updateCount();
-      });
+ol.addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+  if (!li) return;
+  li.classList.toggle("marked");
+  updateCount();
+});
 
-      function setMode(mode) {
-        ol.classList.remove("only-srb", "only-ru");
-        if (mode) ol.classList.add(mode);
-        document
-          .querySelectorAll("#b-srb, #b-ru, #b-all")
-          .forEach((b) => b.classList.remove("active"));
-        const id = { "only-srb": "b-srb", "only-ru": "b-ru", "": "b-all" }[
-          mode
-        ];
-        document.getElementById(id).classList.add("active");
-      }
+function setMode(mode) {
+  ol.classList.remove("only-srb", "only-ru");
+  if (mode) ol.classList.add(mode);
+  document
+    .querySelectorAll("#b-srb, #b-ru, #b-all")
+    .forEach((b) => b.classList.remove("active"));
+  const id = { "only-srb": "b-srb", "only-ru": "b-ru", "": "b-all" }[mode];
+  document.getElementById(id).classList.add("active");
+}
 
-      function shuffle() {
-        const lis = [...ol.children];
-        for (let i = lis.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [lis[i], lis[j]] = [lis[j], lis[i]];
-        }
-        ol.replaceChildren(...lis);
-        ol.classList.add("no-days");
-      }
+function shuffle() {
+  const lis = [...ol.children];
+  for (let i = lis.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [lis[i], lis[j]] = [lis[j], lis[i]];
+  }
+  ol.replaceChildren(...lis);
+  ol.classList.add("no-days");
+}
 
-      function toggleForgotten() {
-        const on = ol.classList.toggle("only-forgotten");
-        document.getElementById("b-forgotten").classList.toggle("active", on);
-        updateCount();
-      }
+function toggleForgotten() {
+  const on = ol.classList.toggle("only-forgotten");
+  document.getElementById("b-forgotten").classList.toggle("active", on);
+  updateCount();
+}
 
-      updateCount();
-    </script>
-  </body>
-</html>
+updateCount();
+</script>
