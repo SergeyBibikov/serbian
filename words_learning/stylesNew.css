@@ -67,9 +67,18 @@ li {
 li:last-child {
   border-bottom: 0;
 }
-li:hover {
+
+/* hover only on devices that can really hover (avoids "sticky" hover on touch) */
+@media (hover: hover) {
+  li:hover {
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+  }
+}
+/* tap feedback: only while the finger is down */
+li:active {
   background: color-mix(in srgb, var(--accent) 7%, transparent);
 }
+
 li::before {
   content: counter(w);
   text-align: right;
@@ -104,10 +113,8 @@ ol.only-forgotten {
   text-underline-offset: 3px;
 }
 
+/* must come after the hover/active rules so marked rows keep their color */
 li.marked {
-  background: var(--mark);
-}
-li.marked:hover {
   background: var(--mark);
 }
 
