@@ -6,6 +6,96 @@
     <title>Повторение</title>
   </head>
 
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --accent: #4f46e5;
+      --accent-soft: #eef0ff;
+      --on-accent: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --text: #e5e7eb;
+        --accent: #818cf8;
+        --accent-soft: #2b3553;
+        --on-accent: #0f172a;
+        --border: #334155;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 1rem;
+      font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 auto;
+      padding: 1rem;
+      max-width: 640px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 0.75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition:
+        transform 0.15s,
+        background 0.15s,
+        color 0.15s;
+    }
+
+    a:hover,
+    a:focus-visible {
+      background: var(--accent);
+      color: var(--on-accent);
+      outline: none;
+    }
+
+    a:active {
+      transform: scale(0.94);
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+
+    a:visited {
+      opacity: 0.6;
+    }
+  </style>
+
   <body>
     <ul>
       <li><a href="./revision/1.html">1</a></li>
